@@ -1,0 +1,9 @@
+I"Ä(function() {
+  App.groups = App.cable.subscriptions.create("GroupsChannel", {
+    connected: function() {},
+    disconnected: function() {},
+    received: function(data) {}
+  });
+
+}).call(this);
+:ET

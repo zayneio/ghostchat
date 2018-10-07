@@ -1,0 +1,498 @@
+// Place all the styles related to the groups controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.group-new-right-top{
+  padding:20px;
+  margin:auto;
+  margin-top:50px !important;
+  width:85%;
+}
+
+
+.chat-content{
+	position: absolute !important;
+    top: 0px !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+	.group-left-top{
+	  margin-left:0 !important;
+	  margin-right:0 !important;
+	  background-color:black;
+	  width:100%;
+	  position:absolute;
+
+		.top-left{
+		  left:0 !important;
+		  position:relative !important;
+
+			.top-btn-left{
+			  margin-top:26px;
+			  position:relative;
+			  text-align:center;
+			  color:white;
+			  font-size:24px;
+			  transiton: ease-in-out 0.2s;
+			  &:hover{
+			  color:#3B3E99;
+			  }
+			  i::before{
+			    margin-top:10px;
+			  }
+			}
+		}
+
+		.top-mid-wrap{
+			padding-top:10px;
+			text-align:center;
+
+			.top-middle{
+			  font-size:20px;color:white;
+			  font-weight:500;
+			  text-align:center;
+			  padding-top:15px;
+			}
+		}
+
+		.top-right{
+		  text-align:right;
+		  right:15px !important;
+		  position:relative !important;
+
+			.top-btn-right{
+			  text-align:right;
+			  position:relative;
+			  right:0 !important;
+			  top:0;
+			  color:white;
+			  font-size:32px;
+			  transition: ease-in-out 0.2s;
+
+			  &:hover{
+			  color:#3B3E99;
+			  }
+			}
+		}
+
+	}
+
+
+.group-left{
+  position:relative;
+  overflow:scroll;
+  background:#3B3E99;
+  padding-left:0 !important;
+  padding-right:0 !important;
+
+	.group-left-top{
+	  margin-left:0 !important;
+	  margin-right:0 !important;
+	  background-color:black;
+	  width:100%;
+	  position:absolute;
+
+		.top-left{
+		  left:0 !important;
+		  position:relative !important;
+
+			.top-btn-left{
+			  margin-top:26px;
+			  position:relative;
+			  text-align:center;
+			  color:white;
+			  font-size:24px;
+			  transiton: ease-in-out 0.2s;
+			  &:hover{
+			  color:#3B3E99;
+			  }
+			  i::before{
+			    margin-top:10px;
+			  }
+			}
+		}
+
+		.top-mid-wrap{
+			padding-top:10px;
+			text-align:center;
+
+			.top-middle{
+			  font-size:20px;color:white;
+			  font-weight:500;
+			  text-align:center;
+			  padding-top:15px;
+			}
+		}
+
+		.top-right{
+		  text-align:right;
+		  right:0 !important;
+		  position:relative !important;
+
+			.top-btn-right{
+			  text-align:right;
+			  position:relative;
+			  right:0 !important;
+			  top:0;
+			  color:white;
+			  font-size:32px;
+			  transition: ease-in-out 0.2s;
+
+			  &:hover{
+			  color:#3B3E99;
+			  }
+			}
+		}
+
+	}
+
+	.post-container {
+	    margin: 0px 0px 0 0;
+	    border: 1px solid #333;
+	    overflow: auto;
+
+		.post-thumb {
+		    float: left;
+
+			img {
+			    display: block;
+			    margin-top:15px;
+			    margin-left:15px;
+			}
+		}
+		.post-content {
+		    color:white;
+
+			.guest-name{
+			  color:white;
+			  font-size:18px !important;
+			  font-weight: bold;
+			}
+
+			.join-date{
+			  color:white;
+			  font-size:12px !important;
+			}
+
+		}
+	}
+
+	.post-title {
+	    font-weight: bold;
+	    font-size: 200%;
+	    color:white;
+	}
+
+	.glc-wrap{
+	  margin-top:0px;
+	  background-color:#F14D7B;
+	  color:white;
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#galaxy {
+  z-index: -1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  // background: #210D6E;
+  background: #152770; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(150deg, #210D6E, #3381b2); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(150deg, #210D6E, #3381b2); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(150deg, #210D6E, #3381b2); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(150deg, #210D6E, #3381b2); /* Standard syntax (must be last) */
+}
+
+#galaxy,
+#galaxy .bg {
+  width: 100%;
+  height: 100%;
+}
+
+#galaxy * {
+  position: absolute;
+}
+
+#galaxy .bg {
+  /* background: url('https://raw.githubusercontent.com/gurde/css3-animated-galaxy/master/img/bg.jpg') no-repeat 50% 50%; */
+}
+
+#galaxy .bg.center {
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: 200px;
+  margin: -100px 0 0 -200px;
+  opacity: 0.3;
+  -webkit-border-radius: 500px;
+  -moz-border-radius: 500px;
+  border-radius: 500px;
+}
+
+#galaxy [class^="stars"] {
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+}
+
+#galaxy .stars-back {
+  background: url("https://raw.githubusercontent.com/gurde/css3-animated-galaxy/master/img/back.png");
+  opacity: 0.9;
+  -webkit-animation: orbit-clock-wise 440s infinite linear;
+  -moz-animation: orbit-clock-wise 440s infinite linear;
+  -o-animation: orbit-clock-wise 440s infinite linear;
+  -ms-animation: orbit-clock-wise 440s infinite linear;
+  animation: orbit-clock-wise 440s infinite linear;
+}
+
+#galaxy .stars-middle {
+  background: url("https://raw.githubusercontent.com/gurde/css3-animated-galaxy/master/img/middle.png");
+  opacity: 0.9;
+  -webkit-animation: orbit-counter-clock-wise 360s infinite linear;
+  -moz-animation: orbit-counter-clock-wise 360s infinite linear;
+  -o-animation: orbit-counter-clock-wise 360s infinite linear;
+  -ms-animation: orbit-counter-clock-wise 360s infinite linear;
+  animation: orbit-counter-clock-wise 360s infinite linear;
+}
+
+#galaxy .stars-front {
+  background: url("https://raw.githubusercontent.com/gurde/css3-animated-galaxy/master/img/front.png");
+  opacity: 1;
+  -webkit-animation: orbit-clock-wise 160s infinite linear;
+  -moz-animation: orbit-clock-wise 160s infinite linear;
+  -o-animation: orbit-clock-wise 160s infinite linear;
+  -ms-animation: orbit-clock-wise 160s infinite linear;
+  animation: orbit-clock-wise 160s infinite linear;
+}
+
+@-webkit-keyframes orbit-clock-wise {
+  0% {
+    opacity: 0.2;
+    -webkit-transform: rotate(0deg);
+  }
+  2% {
+    opacity: 0.4;
+  }
+  4% {
+    opacity: 0.1;
+  }
+  5% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0.2;
+    -webkit-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes orbit-counter-clock-wise {
+  from {
+    -webkit-transform: rotate(360deg);
+  }
+  to {
+    -webkit-transform: rotate(0deg);
+  }
+}
+@-moz-keyframes orbit-clock-wise {
+  0% {
+    opacity: 0.2;
+    -moz-transform: rotate(0deg);
+  }
+  2% {
+    opacity: 0.4;
+  }
+  4% {
+    opacity: 0.1;
+  }
+  5% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0.2;
+    -moz-transform: rotate(360deg);
+  }
+}
+@-moz-keyframes orbit-counter-clock-wise {
+  from {
+    -moz-transform: rotate(360deg);
+  }
+  to {
+    -moz-transform: rotate(0deg);
+  }
+}
+@-o-keyframes orbit-clock-wise {
+  0% {
+    opacity: 0.2;
+    -o-transform: rotate(0deg);
+  }
+  2% {
+    opacity: 0.4;
+  }
+  4% {
+    opacity: 0.1;
+  }
+  5% {
+    opacity: .4;
+  }
+  100% {
+    opacity: 0.4;
+    -o-transform: rotate(360deg);
+  }
+}
+@-o-keyframes orbit-counter-clock-wise {
+  from {
+    -o-transform: rotate(360deg);
+  }
+  to {
+    -o-transform: rotate(0deg);
+  }
+}
+@-ms-keyframes orbit-clock-wise {
+  0% {
+    opacity: 0.4;
+    -ms-transform: rotate(0deg);
+  }
+  2% {
+    opacity: 0.4;
+  }
+  4% {
+    opacity: 0.1;
+  }
+  5% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0.2;
+    -ms-transform: rotate(360deg);
+  }
+}
+@-ms-keyframes orbit-counter-clock-wise {
+  from {
+    -ms-transform: rotate(360deg);
+  }
+  to {
+    -ms-transform: rotate(0deg);
+  }
+}
+@keyframes orbit-clock-wise {
+  0% {
+    opacity: 0.4;
+    transform: rotate(0deg);
+  }
+  2% {
+    opacity: 0.4;
+  }
+  4% {
+    opacity: 0.1;
+  }
+  5% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0.2;
+    transform: rotate(360deg);
+  }
+}
+@keyframes orbit-counter-clock-wise {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.text-center {
+  padding-top: 20px;
+}
+.col-xs-12 {
+  background-color: #fff;
+}
+#sidebar {
+  height: 100%;
+  padding-right: 0;
+  padding-top: 20px;
+}
+#sidebar .nav {
+  width: 95%;
+}
+#sidebar li {
+  border:0 #f2f2f2 solid;
+  border-bottom-width:1px;
+}
+
+/* collapsed sidebar styles */
+@media screen and (max-width: 1000px) {
+  .sidebar-offcanvas {
+    position: relative !important;
+    -webkit-transition: all 0.25s ease-out !important;
+    -moz-transition: all 0.25s ease-out !important;
+    transition: all 0.25s ease-out !important;
+    z-index: 2;
+  }
+  .sidebar-offcanvas {
+    right: -85% !important;
+  }
+
+  .sidebar-offcanvas {
+    left: -85% !important;
+  }
+  .sidebar-offcanvas.active {
+    right: 85% !important;
+  }
+  .sidebar-offcanvas.active {
+    left: 0px !important;
+  }
+  .sidebar-offcanvas {
+    position: absolute !important;
+    top: 0 !important;
+    width: 85% !important;
+  }
+  #sidebar {
+    padding-top:0 !important;
+  }
+}

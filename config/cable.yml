@@ -1,0 +1,10 @@
+development:
+  adapter: async
+
+test:
+  adapter: async
+
+production:
+  adapter: redis
+  url: redis://redistogo:f8f729fc51c9bd0e59ddc0d074f54f0d@spinyfin.redistogo.com:10671
+  # channel_prefix: ghostchat_v2_production

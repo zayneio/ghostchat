@@ -1,0 +1,20 @@
+<div data-id="<%= message.user.id %>" class="message-outer-wrap" id="message-box-<%= message.user.id %>">
+	<span class="message-username message-box-<%= message.user.id %>">
+		<%= message.user.username %>:
+	</span> 
+	<span class="message-created-at">
+		<%=time_ago_in_words(message.created_at) %> ago
+	</span> 
+	<br>
+	</span> 
+	<span class="message-content">
+		<%= message.body %>
+		<!-- < % = #EncryptText.decrypt(message.body, nil, message.iv) % > -->
+	</span>
+	<br />
+</div>
+
+<script>
+  var my_user_id = <%= message.user.id %>
+  newMessageClass(my_user_id)
+</script>

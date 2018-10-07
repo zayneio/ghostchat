@@ -1,0 +1,16 @@
+<div class="create-group-form">
+<%= form_for [group, user], data:{slug:@group.slug} do |f| %>
+
+  <div class="cgf-header">New User for <%= group.title %></div>
+
+  <div class="cgf-input-container">
+    <label>Username</label> <%= f.text_field :username, placeholder: "Pick a username", :autocomplete => :off, class: "form-control" %>
+  </div>
+
+
+  <div class="cgf-input-container">
+    <%= f.submit "Create User", id: "create-user", class: "btn group-btn" %>
+  </div>
+
+<% end %>
+</div>

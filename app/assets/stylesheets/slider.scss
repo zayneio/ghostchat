@@ -1,0 +1,245 @@
+/* MUH SLIDER */
+
+
+.eleven-columns li {
+  width: calc(100% / 5);
+  font-size:12px;
+}
+
+
+/* Functional styling;
+ * These styles are required for noUiSlider to function.
+ * You don't need to change these rules to apply your design.
+ */
+
+.no-ui-slider {
+  width: 100%;
+}
+
+.no-ui-slider .slider-labels {
+  list-style: none;
+  padding: 0;
+  margin-top: 5px;
+  margin-left:3px;
+  width: 100%;
+  text-align: left;
+  font-size: 13px;
+}
+
+.no-ui-slider .slider-labels li {
+  color: #d3d3d3;
+  display: inline;
+  float: left;
+  cursor: pointer;
+}
+
+.no-ui-slider .slider-labels li:nth-last-child(1) {
+  position: absolute;
+  margin-left: -3px;
+  width: 25px;
+}
+
+.no-ui-slider .slider-labels li:hover {
+  color: white;
+}
+
+.no-ui-slider .slider-labels li.active {
+  color: white;
+}
+
+.noUi-target,
+.noUi-target * {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -ms-touch-action: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.noUi-base {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.noUi-origin {
+  position: absolute;
+  right: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+
+.noUi-handle {
+  position: relative;
+  z-index: 1;
+  cursor: move;
+}
+
+.noUi-stacking .noUi-handle {
+  /* This class is applied to the lower origin when
+   its values is > 50%. */
+  z-index: 10;
+}
+
+.noUi-stacking + .noUi-origin {
+  /* Fix stacking order in IE7, which incorrectly
+   creates a new context for the origins. */
+  *z-index: -1;
+}
+
+.noUi-state-tap .noUi-origin {
+  -webkit-transition: left 0.3s, top 0.3s;
+  transition: left 0.3s, top 0.3s;
+}
+
+.noUi-state-drag * {
+  cursor: inherit !important;
+}
+
+
+/* Slider size and handle placement;
+ */
+
+.noUi-horizontal {
+  height: 15px;
+}
+
+.noUi-horizontal .noUi-handle {
+  width: 26px;
+  height: 26px;
+  left: -13px;
+  top: -7px;
+  border-radius: 100%;
+}
+
+.noUi-horizontal.noUi-extended {
+  padding: 0 15px;
+}
+
+.noUi-horizontal.noUi-extended .noUi-origin {
+  right: -15px;
+}
+
+.noUi-vertical {
+  width: 18px;
+}
+
+.noUi-vertical .noUi-handle {
+  width: 20px;
+  height: 20px;
+  left: -10px;
+  top: -6px;
+  border-radius: 100%;
+}
+
+.noUi-vertical.noUi-extended {
+  padding: 15px 0;
+}
+
+.noUi-vertical.noUi-extended .noUi-origin {
+  bottom: -15px;
+}
+
+
+/* Styling;
+ */
+
+.noUi-background {
+  background: #FAFAFA;
+  box-shadow: inset 0 1px 1px #f0f0f0;
+}
+
+.noUi-connect {
+
+  background:#E2959F;
+  box-shadow: inset 0 0 3px rgba(51, 51, 51, 0.45);
+  -webkit-transition: background 450ms;
+  transition: background 450ms;
+}
+
+.noUi-origin {
+  border-radius: 10px;
+}
+
+.noUi-target {
+  border-radius: 10px;
+  border: 1px solid #D3D3D3;
+}
+
+.noUi-target.noUi-connect {
+  box-shadow: inset 0 0 3px rgba(51, 51, 51, 0.45), 0 3px 6px -5px #BBB;
+}
+
+/* Handles and cursors;
+ */
+
+.noUi-dragable {
+  cursor: w-resize;
+}
+
+.noUi-vertical .noUi-dragable {
+  cursor: n-resize;
+}
+
+.noUi-handle {
+  border: 1px solid #464646;
+  border-radius: 100%;
+  background: #464646;
+  cursor: default;
+}
+
+.noUi-active {}
+
+
+/* Handle stripes;
+ */
+
+.noUi-handle:before,
+.noUi-handle:after {
+  display: block;
+  position: absolute;
+  height: 14px;
+  width: 1px;
+  background: #E8E7E6;
+  left: 14px;
+  top: 6px;
+}
+
+.noUi-handle:after {
+  left: 17px;
+}
+
+.noUi-vertical .noUi-handle:before,
+.noUi-vertical .noUi-handle:after {
+  width: 14px;
+  height: 1px;
+  left: 6px;
+  top: 14px;
+}
+
+.noUi-vertical .noUi-handle:after {
+  top: 17px;
+}
+
+
+/* Disabled state;
+ */
+
+[disabled].noUi-connect,
+[disabled] .noUi-connect {
+  background: #B8B8B8;
+}
+
+[disabled] .noUi-handle {
+  cursor: not-allowed;
+}
+
+
+.ui-slider-handle:focus, ui-corner-all:focus, ui-state-default:focus, slider4, green, ui-slider, ui-corner-all, ui-slider-horizontal, ui-widget ui-widget-content, ui-slider-pips, ui-slider-float{
+outline:0;
+
+}
+/* MUH SLIDER END */

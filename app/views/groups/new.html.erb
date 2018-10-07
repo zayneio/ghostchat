@@ -1,0 +1,37 @@
+<div class="create-group-form">
+	<%= form_for @group do |f| %>
+
+		<div class="cgf-header">Create a Group</div>
+
+		<div class="cgf-input-container">
+			<label>Title (Optional)</label>
+			<%= f.text_field :title, :autocomplete => :off, placeholder: "Name your group", class: "form-control" %>
+		</div>
+
+		<div class="cgf-input-container">
+			<label>Expires In:</label>
+		  <div id="year-slider" class="no-ui-slider">
+		    <div class="slider"></div>
+		    <ul class="slider-labels eleven-columns" id="sliderthing">
+		      <li data-id="5">5 min.</li>
+		      <li data-id="30">30 min.</li>
+		      <li data-id="60" class="active">1 hr</li>
+		      <li data-id="360">6 hrs</li>
+		      <li data-id="720">12 hrs</li>
+		      <li data-id="1440">24 hrs</li>
+		    </ul>
+		  </div>
+		</div>
+
+
+		<%= f.hidden_field :expires_in, value: 60 %>
+		<div class="cgf-input-container">
+			<label>Group Password (Optional)</label> <%= f.password_field :password, placeholder: "Make it private if you want", :autocomplete => :off, class: "form-control" %>
+		</div>
+
+		<div class="cgf-input-container">
+			<%= f.submit "Create Group", id: "create-group", class: "btn group-btn" %>
+		</div>
+	<% end %>
+</div>
+<div style="width: 100%; text-align: center; color: #fff;">Want to create a permanent group?  <a href="#" style="color: #eee;">Sign up for an account</a> or <a href="#" style="color: #eee;">log in!</a></div>

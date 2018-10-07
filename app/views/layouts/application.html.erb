@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GhostchatV2</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    // submitNewMessage();
+    $('textarea#message_body').keydown(function(event) {
+      if (event.keyCode == 13) {
+          $('input[type=submit]').submit();
+          $('#message_body').val("")
+          return false;
+       }
+    });  
+  });  
+</script>

@@ -1,0 +1,13 @@
+<div data-id="<%= message.user.id %>" class="message-outer-wrap">
+	<span class="message-username <%= message.user == current_user(message.group) ? 'by-current-user' : 'message-guest' %>">
+	<%= message.user.username %>
+	</span> 
+	<span class="message-created-at">
+		<%=time_ago_in_words(message.created_at)%> ago
+	</span> 
+		<br>
+		<span class="message-content">
+			<%= message.body %>
+			<!-- < %= #EncryptText.decrypt(message.body, nil, message.iv) %> -->
+		</span><br />
+</div>
