@@ -1,0 +1,24 @@
+.social-box-wrap{
+  text-align:center;
+  height:45px;
+  width:100%;
+  background-color:black;
+}
+
+.social-box{
+    padding-top:2px;
+  span{
+    color:white !important;
+    font-size:16px;
+  }
+}
+
+$size: 24px;
+
+.social-share-button {
+  .ssb-icon {
+    background-size: $size $size;
+    height: $size;
+    width: $size;
+  }
+}

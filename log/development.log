@@ -1,0 +1,1512 @@
+  [1m[35m (496.7ms)[0m  [1m[35mCREATE DATABASE "ghostchat_v2_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (403.5ms)[0m  [1m[35mCREATE DATABASE "ghostchat_v2_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (10.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (5.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4840625032173557340)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateGroups (20181007145731)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (11.2ms)[0m  [1m[35mCREATE TABLE "groups" ("id" bigserial primary key, "title" character varying, "password_digest" character varying, "slug" character varying, "expiration" timestamp, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20181007145731_create_groups.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20181007145731"]]
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreateUsers (20181007145922)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (8.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "group_id" integer, "username" character varying, "is_creator" boolean, "password_digest" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20181007145922_create_users.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20181007145922"]]
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreateMessages (20181007150023)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (5.8ms)[0m  [1m[35mCREATE TABLE "messages" ("id" bigserial primary key, "group_id" integer, "user_id" integer, "body" text, "iv" bytea, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20181007150023_create_messages.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20181007150023"]]
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-10-07 15:01:21.050008"], ["updated_at", "2018-10-07 15:01:21.050008"]]
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(4840625032173557340)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Started GET "/account" for 127.0.0.1 at 2018-10-07 11:30:24 -0400
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by GroupsController#show as HTML
+  Parameters: {"slug"=>"account"}
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.0ms)
+
+
+  
+LoadError (cannot load such file -- encrypt_text):
+  
+app/models/group.rb:2:in `<main>'
+app/controllers/groups_controller.rb:78:in `set_group'
+Started GET "/" for 127.0.0.1 at 2018-10-07 11:30:28 -0400
+Processing by GroupsController#new as HTML
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms)
+
+
+  
+LoadError (cannot load such file -- encrypt_text):
+  
+app/models/group.rb:2:in `<main>'
+app/controllers/groups_controller.rb:5:in `new'
+Started GET "/" for 127.0.0.1 at 2018-10-07 11:31:31 -0400
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by GroupsController#new as HTML
+Completed 500 Internal Server Error in 79ms (ActiveRecord: 7.6ms)
+
+
+  
+ActionView::MissingTemplate (Missing layout layouts/formlayouts with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/Users/zayne/Development/personal/ghostchat_v2/app/views"
+):
+  
+app/controllers/groups_controller.rb:7:in `block (2 levels) in new'
+app/controllers/groups_controller.rb:6:in `new'
+Started GET "/" for 127.0.0.1 at 2018-10-07 11:32:32 -0400
+Processing by GroupsController#new as HTML
+Completed 500 Internal Server Error in 32ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::MissingTemplate (Missing layout layouts/formlayouts with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/Users/zayne/Development/personal/ghostchat_v2/app/views"
+):
+  
+app/controllers/groups_controller.rb:7:in `block (2 levels) in new'
+app/controllers/groups_controller.rb:6:in `new'
+Started GET "/" for 127.0.0.1 at 2018-10-07 11:32:39 -0400
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by GroupsController#new as HTML
+Completed 500 Internal Server Error in 54ms (ActiveRecord: 6.9ms)
+
+
+  
+ActionView::MissingTemplate (Missing layout layouts/formlayouts with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/Users/zayne/Development/personal/ghostchat_v2/app/views"
+):
+  
+app/controllers/groups_controller.rb:7:in `block (2 levels) in new'
+app/controllers/groups_controller.rb:6:in `new'
+Started GET "/" for 127.0.0.1 at 2018-10-07 11:33:09 -0400
+Processing by GroupsController#new as HTML
+  Rendering groups/new.html.erb within layouts/formlayouts
+  Rendered groups/new.html.erb within layouts/formlayouts (23.7ms)
+Completed 500 Internal Server Error in 2790ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (The asset "ghost-md.png" is not present in the asset pipeline.):
+    17:     <div class="spin-son row group-new-section-1">
+    18:       <div class="col-md-6">
+    19:         <div class="group-header">
+    20:           <img src="<%= image_url 'ghost-md.png' %>" width="150">
+    21:           <h1>Encrypted, <br>Expiring Group Chat</h1>
+    22:           <p class="home-description">Create a group for your friends or co-workers in seconds. Solve a problem, share articles and links all in the browser. Once your group expires, it's gone!</p>
+    23:         </div>
+  
+app/views/layouts/formlayouts.html.erb:20:in `_app_views_layouts_formlayouts_html_erb___2025777466364873147_70225725120080'
+app/controllers/groups_controller.rb:7:in `block (2 levels) in new'
+app/controllers/groups_controller.rb:6:in `new'
+Started GET "/" for 127.0.0.1 at 2018-10-07 11:34:12 -0400
+Processing by GroupsController#new as HTML
+  Rendering groups/new.html.erb within layouts/formlayouts
+  Rendered groups/new.html.erb within layouts/formlayouts (1.9ms)
+Completed 200 OK in 1436ms (Views: 1435.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cable" for 127.0.0.1 at 2018-10-07 11:34:14 -0400
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2018-10-07 11:34:14 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Could not execute command from ({"command"=>"subscribe", "identifier"=>"{\"channel\":\"GroupsChannel\"}"}) [SyntaxError - /Users/zayne/Development/personal/ghostchat_v2/app/channels/groups_channel.rb:17: syntax error, unexpected end-of-input, expecting keyword_end
+  end
+     ^]: /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:472:in `block in load_file' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:657:in `new_constants_in' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:471:in `load_file'
+Started GET "/" for 127.0.0.1 at 2018-10-07 11:36:45 -0400
+Processing by GroupsController#new as HTML
+  Rendering groups/new.html.erb within layouts/formlayouts
+  Rendered groups/new.html.erb within layouts/formlayouts (2.0ms)
+Completed 500 Internal Server Error in 2414ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (Invalid CSS after "": expected selector, was "="):
+    4:     <title>Ghostchat</title>
+    5:     <%= csrf_meta_tags %>
+    6: 
+    7:     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    8:     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    9:     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+   10: 
+  
+app/assets/stylesheets/application.scss:30
+app/views/layouts/formlayouts.html.erb:7:in `_app_views_layouts_formlayouts_html_erb___2025777466364873147_70225766170840'
+app/controllers/groups_controller.rb:7:in `block (2 levels) in new'
+app/controllers/groups_controller.rb:6:in `new'
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2018-10-07 11:36:48 -0400
+Started GET "/" for 127.0.0.1 at 2018-10-07 11:37:21 -0400
+Processing by GroupsController#new as HTML
+  Rendering groups/new.html.erb within layouts/formlayouts
+  Rendered groups/new.html.erb within layouts/formlayouts (1.9ms)
+Completed 200 OK in 2758ms (Views: 2756.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cable" for 127.0.0.1 at 2018-10-07 11:37:25 -0400
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2018-10-07 11:37:25 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Could not execute command from ({"command"=>"subscribe", "identifier"=>"{\"channel\":\"GroupsChannel\"}"}) [SyntaxError - /Users/zayne/Development/personal/ghostchat_v2/app/channels/groups_channel.rb:17: syntax error, unexpected end-of-input, expecting keyword_end
+  end
+     ^]: /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:472:in `block in load_file' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:657:in `new_constants_in' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:471:in `load_file'
+Started POST "/" for 127.0.0.1 at 2018-10-07 11:37:28 -0400
+Processing by GroupsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"x8/UFksW5rjEvmR0Bt6aqEgqHDIwHfnetvZ1uFt4dvpjHvheTsdJepcN9mhdn6qhH6XnRnPCjGYskFnZhH9EdA==", "group"=>{"title"=>"", "expires_in"=>"60", "password"=>"[FILTERED]"}, "commit"=>"Create Group"}
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (uninitialized constant Group::RandomNouns):
+  
+app/models/group.rb:54:in `random_title'
+app/controllers/groups_controller.rb:14:in `create'
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2018-10-07 11:37:29 -0400
+Started GET "/" for 127.0.0.1 at 2018-10-07 11:39:35 -0400
+Processing by GroupsController#new as HTML
+  Rendering groups/new.html.erb within layouts/formlayouts
+  Rendered groups/new.html.erb within layouts/formlayouts (2.3ms)
+Completed 200 OK in 233ms (Views: 231.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cable" for 127.0.0.1 at 2018-10-07 11:39:36 -0400
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2018-10-07 11:39:36 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Could not execute command from ({"command"=>"subscribe", "identifier"=>"{\"channel\":\"GroupsChannel\"}"}) [SyntaxError - /Users/zayne/Development/personal/ghostchat_v2/app/channels/groups_channel.rb:17: syntax error, unexpected end-of-input, expecting keyword_end
+  end
+     ^]: /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:472:in `block in load_file' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:657:in `new_constants_in' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:471:in `load_file'
+Started POST "/" for 127.0.0.1 at 2018-10-07 11:39:38 -0400
+Processing by GroupsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"1uNRKHj2JQw+/YM59TLXZn4rjMCln2X3NP1qseDCYmFyMn1gfSeKzm1OESWuc+dvKaR3tOZAEE+um0bQP8VQ7w==", "group"=>{"title"=>"", "expires_in"=>"60", "password"=>"[FILTERED]"}, "commit"=>"Create Group"}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (uninitialized constant Group::RandomNouns):
+  
+app/models/group.rb:54:in `random_title'
+app/controllers/groups_controller.rb:14:in `create'
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2018-10-07 11:39:38 -0400
+Started GET "/" for 127.0.0.1 at 2018-10-07 11:39:56 -0400
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by GroupsController#new as HTML
+  Rendering groups/new.html.erb within layouts/formlayouts
+  Rendered groups/new.html.erb within layouts/formlayouts (3.7ms)
+Completed 200 OK in 2150ms (Views: 2120.8ms | ActiveRecord: 6.3ms)
+
+
+Started GET "/cable" for 127.0.0.1 at 2018-10-07 11:39:58 -0400
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2018-10-07 11:39:58 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Could not execute command from ({"command"=>"subscribe", "identifier"=>"{\"channel\":\"GroupsChannel\"}"}) [SyntaxError - /Users/zayne/Development/personal/ghostchat_v2/app/channels/groups_channel.rb:17: syntax error, unexpected end-of-input, expecting keyword_end
+  end
+     ^]: /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:472:in `block in load_file' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:657:in `new_constants_in' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:471:in `load_file'
+Started POST "/" for 127.0.0.1 at 2018-10-07 11:40:00 -0400
+Processing by GroupsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9mIIJQMimwDOnpvvRVUuYNGE2oLU9ze3vP7YRbskvN9SsyRtBvM0wp0tCfMeFB5phgsh9pcoQg8mmPQkZCOOUQ==", "group"=>{"title"=>"", "expires_in"=>"60", "password"=>"[FILTERED]"}, "commit"=>"Create Group"}
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT "groups"."title" FROM "groups"[0m
+  ↳ app/models/group.rb:55
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/groups_controller.rb:16
+  [1m[36mGroup Exists (1.7ms)[0m  [1m[34mSELECT  1 AS one FROM "groups" WHERE LOWER("groups"."title") = LOWER($1) LIMIT $2[0m  [["title", "upper_cannon"], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:16
+  [1m[36mGroup Create (8.4ms)[0m  [1m[32mINSERT INTO "groups" ("title", "slug", "expiration", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "upper_cannon"], ["slug", "upper_cannon"], ["expiration", "2018-10-07 16:40:00.494119"], ["created_at", "2018-10-07 15:40:00.493963"], ["updated_at", "2018-10-07 15:40:00.493963"]]
+  ↳ app/controllers/groups_controller.rb:16
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/groups_controller.rb:16
+Completed 500 Internal Server Error in 29ms (ActiveRecord: 15.5ms)
+
+
+  
+ArgumentError (key must be 32 bytes):
+  
+lib/encrypt_text.rb:27:in `key='
+lib/encrypt_text.rb:27:in `encrypt_key'
+app/models/group.rb:25:in `set_group_key'
+app/controllers/groups_controller.rb:17:in `create'
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2018-10-07 11:40:01 -0400
+Started GET "/" for 127.0.0.1 at 2018-10-07 11:43:05 -0400
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by GroupsController#new as HTML
+  Rendering groups/new.html.erb within layouts/formlayouts
+  Rendered groups/new.html.erb within layouts/formlayouts (3.5ms)
+Completed 200 OK in 1826ms (Views: 1798.1ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/cable" for 127.0.0.1 at 2018-10-07 11:43:08 -0400
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2018-10-07 11:43:08 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Could not execute command from ({"command"=>"subscribe", "identifier"=>"{\"channel\":\"GroupsChannel\"}"}) [SyntaxError - /Users/zayne/Development/personal/ghostchat_v2/app/channels/groups_channel.rb:17: syntax error, unexpected end-of-input, expecting keyword_end
+  end
+     ^]: /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:472:in `block in load_file' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:657:in `new_constants_in' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:471:in `load_file'
+Started POST "/" for 127.0.0.1 at 2018-10-07 11:43:10 -0400
+Processing by GroupsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nEvjPH2IC5SAzS8lz7lAwbwVKMxuo9+m6wOPCDeMMs04ms90eFmkVtN+vTmU+HDI65rTuC18qh5xZaNp6IsAQw==", "group"=>{"title"=>"", "expires_in"=>"60", "password"=>"[FILTERED]"}, "commit"=>"Create Group"}
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "groups"."title" FROM "groups"[0m
+  ↳ app/models/group.rb:55
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/groups_controller.rb:16
+  [1m[36mGroup Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "groups" WHERE LOWER("groups"."title") = LOWER($1) LIMIT $2[0m  [["title", "hippocrepis"], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:16
+  [1m[36mGroup Create (2.0ms)[0m  [1m[32mINSERT INTO "groups" ("title", "slug", "expiration", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "hippocrepis"], ["slug", "hippocrepis"], ["expiration", "2018-10-07 16:43:10.208695"], ["created_at", "2018-10-07 15:43:10.208490"], ["updated_at", "2018-10-07 15:43:10.208490"]]
+  ↳ app/controllers/groups_controller.rb:16
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/groups_controller.rb:16
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 5.7ms)
+
+
+  
+ArgumentError (key must be 32 bytes):
+  
+lib/encrypt_text.rb:27:in `key='
+lib/encrypt_text.rb:27:in `encrypt_key'
+app/models/group.rb:25:in `set_group_key'
+app/controllers/groups_controller.rb:17:in `create'
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2018-10-07 11:43:10 -0400
+Started GET "/" for 127.0.0.1 at 2018-10-07 11:49:24 -0400
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by GroupsController#new as HTML
+  Rendering groups/new.html.erb within layouts/formlayouts
+  Rendered groups/new.html.erb within layouts/formlayouts (3.0ms)
+Completed 200 OK in 2450ms (Views: 2416.6ms | ActiveRecord: 6.6ms)
+
+
+Started GET "/cable" for 127.0.0.1 at 2018-10-07 11:49:26 -0400
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2018-10-07 11:49:27 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Could not execute command from ({"command"=>"subscribe", "identifier"=>"{\"channel\":\"GroupsChannel\"}"}) [SyntaxError - /Users/zayne/Development/personal/ghostchat_v2/app/channels/groups_channel.rb:20: syntax error, unexpected tIDENTIFIER, expecting ')'
+      group_id: data['group_id'], 
+      ^~~~~~~~
+/Users/zayne/Development/personal/ghostchat_v2/app/channels/groups_channel.rb:21: syntax error, unexpected tLABEL, expecting '='
+      iv: iv
+      ^~~]: /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:472:in `block in load_file' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:657:in `new_constants_in' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:471:in `load_file'
+Started POST "/" for 127.0.0.1 at 2018-10-07 11:49:28 -0400
+Processing by GroupsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OzWngTxwcg/NuamfPjH5pA8nNjEeFZx3nfYTckde3Quf5IvJOaHdzZ4KO4NlcMmtWKjNRV3K6c8HkD8TmFnvhQ==", "group"=>{"title"=>"", "expires_in"=>"60", "password"=>"[FILTERED]"}, "commit"=>"Create Group"}
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "groups"."title" FROM "groups"[0m
+  ↳ app/models/group.rb:57
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/groups_controller.rb:16
+  [1m[36mGroup Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "groups" WHERE LOWER("groups"."title") = LOWER($1) LIMIT $2[0m  [["title", "summer_cypress"], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:16
+  [1m[36mGroup Create (7.6ms)[0m  [1m[32mINSERT INTO "groups" ("title", "slug", "expiration", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "summer_cypress"], ["slug", "summer_cypress"], ["expiration", "2018-10-07 16:49:28.102001"], ["created_at", "2018-10-07 15:49:28.101797"], ["updated_at", "2018-10-07 15:49:28.101797"]]
+  ↳ app/controllers/groups_controller.rb:16
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/groups_controller.rb:16
+  Rendering groups/makeusers.html.erb
+  Rendered groups/makeusers.html.erb (7.3ms)
+Completed 200 OK in 41ms (Views: 15.6ms | ActiveRecord: 11.2ms)
+
+
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2018-10-07 11:49:28 -0400
+Started POST "/summer_cypress/users" for 127.0.0.1 at 2018-10-07 11:49:33 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"k1mCBSY1LI0bZWgWf1SjPLRPOx9wIMY/EOIiXKDg7G4rhErixUkYuNL1yHbciECblFpGGmS6QICNsuya3WLhyg==", "user"=>{"username"=>""}, "commit"=>"Create User", "group_slug"=>"summer_cypress"}
+  [1m[36mGroup Load (1.3ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."slug" = $1 LIMIT $2[0m  [["slug", "summer_cypress"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "users"."username" FROM "users"[0m
+  ↳ app/models/user.rb:15
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:14
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) AND "users"."group_id" = $2 LIMIT $3[0m  [["username", "expert_saint_ulmo"], ["group_id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:14
+  [1m[36mUser Create (1.9ms)[0m  [1m[32mINSERT INTO "users" ("group_id", "username", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["group_id", 3], ["username", "expert_saint_ulmo"], ["created_at", "2018-10-07 15:49:33.741714"], ["updated_at", "2018-10-07 15:49:33.741714"]]
+  ↳ app/controllers/users_controller.rb:14
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:14
+Redirected to http://localhost:3000/summer_cypress
+Completed 302 Found in 36ms (ActiveRecord: 9.6ms)
+
+
+Started GET "/summer_cypress" for 127.0.0.1 at 2018-10-07 11:49:33 -0400
+Processing by GroupsController#show as HTML
+  Parameters: {"slug"=>"summer_cypress"}
+  [1m[36mGroup Load (0.3ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."slug" = $1 LIMIT $2[0m  [["slug", "summer_cypress"], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:78
+  [1m[36mCACHE Group Load (0.0ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."slug" = $1 LIMIT $2[0m  [["slug", "summer_cypress"], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:31
+  [1m[36mMessage Load (0.8ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."group_id" = $1[0m  [["group_id", 3]]
+  ↳ app/controllers/groups_controller.rb:31
+Completed 500 Internal Server Error in 158ms (ActiveRecord: 6.0ms)
+
+
+  
+NoMethodError (undefined method `logged_in?' for #<GroupsController:0x00007face0480eb0>
+Did you mean?  logger):
+  
+app/controllers/groups_controller.rb:33:in `show'
+Started GET "/summer_cypress" for 127.0.0.1 at 2018-10-07 11:50:23 -0400
+Processing by GroupsController#show as HTML
+  Parameters: {"slug"=>"summer_cypress"}
+  [1m[36mGroup Load (0.2ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."slug" = $1 LIMIT $2[0m  [["slug", "summer_cypress"], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:78
+  [1m[36mCACHE Group Load (0.0ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."slug" = $1 LIMIT $2[0m  [["slug", "summer_cypress"], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:31
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."group_id" = $1[0m  [["group_id", 3]]
+  ↳ app/controllers/groups_controller.rb:31
+  Rendering groups/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."group_id" = $1[0m  [["group_id", 3]]
+  ↳ app/views/groups/show.html.erb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mMessage Load (1.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."group_id" = $1 ORDER BY "messages"."created_at" ASC[0m  [["group_id", 3]]
+  ↳ app/views/groups/show.html.erb:44
+  Rendered collection of templates [0 times] (0.0ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  Rendered groups/show.html.erb within layouts/application (54.6ms)
+Completed 200 OK in 326ms (Views: 302.8ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/cable" for 127.0.0.1 at 2018-10-07 11:50:25 -0400
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2018-10-07 11:50:25 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Could not execute command from ({"command"=>"subscribe", "identifier"=>"{\"channel\":\"GroupsChannel\"}"}) [SyntaxError - /Users/zayne/Development/personal/ghostchat_v2/app/channels/groups_channel.rb:20: syntax error, unexpected tIDENTIFIER, expecting ')'
+      group_id: data['group_id'], 
+      ^~~~~~~~
+/Users/zayne/Development/personal/ghostchat_v2/app/channels/groups_channel.rb:21: syntax error, unexpected tLABEL, expecting '='
+      iv: iv
+      ^~~]: /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:472:in `block in load_file' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:657:in `new_constants_in' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:471:in `load_file'
+Started GET "/summer_cypress" for 127.0.0.1 at 2018-10-07 11:52:28 -0400
+Processing by GroupsController#show as HTML
+  Parameters: {"slug"=>"summer_cypress"}
+  [1m[36mGroup Load (1.2ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."slug" = $1 LIMIT $2[0m  [["slug", "summer_cypress"], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:78
+  [1m[36mCACHE Group Load (0.0ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."slug" = $1 LIMIT $2[0m  [["slug", "summer_cypress"], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:31
+  [1m[36mMessage Load (0.7ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."group_id" = $1[0m  [["group_id", 3]]
+  ↳ app/controllers/groups_controller.rb:31
+  Rendering groups/show.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."group_id" = $1[0m  [["group_id", 3]]
+  ↳ app/views/groups/show.html.erb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mMessage Load (0.6ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."group_id" = $1 ORDER BY "messages"."created_at" ASC[0m  [["group_id", 3]]
+  ↳ app/views/groups/show.html.erb:44
+  Rendered collection of templates [0 times] (0.0ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  Rendered groups/show.html.erb within layouts/application (31.5ms)
+Completed 200 OK in 2605ms (Views: 2593.3ms | ActiveRecord: 3.6ms)
+
+
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2018-10-07 11:52:31 -0400
+Started GET "/summer_cypress" for 127.0.0.1 at 2018-10-07 11:53:07 -0400
+Processing by GroupsController#show as HTML
+  Parameters: {"slug"=>"summer_cypress"}
+  [1m[36mGroup Load (0.3ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."slug" = $1 LIMIT $2[0m  [["slug", "summer_cypress"], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:78
+  [1m[36mCACHE Group Load (0.0ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."slug" = $1 LIMIT $2[0m  [["slug", "summer_cypress"], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:31
+  [1m[36mMessage Load (0.5ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."group_id" = $1[0m  [["group_id", 3]]
+  ↳ app/controllers/groups_controller.rb:31
+  Rendering groups/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."group_id" = $1[0m  [["group_id", 3]]
+  ↳ app/views/groups/show.html.erb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."group_id" = $1 ORDER BY "messages"."created_at" ASC[0m  [["group_id", 3]]
+  ↳ app/views/groups/show.html.erb:44
+  Rendered collection of templates [0 times] (0.0ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  Rendered groups/show.html.erb within layouts/application (17.3ms)
+Completed 200 OK in 449ms (Views: 437.2ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/cable" for 127.0.0.1 at 2018-10-07 11:53:09 -0400
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2018-10-07 11:53:09 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Could not execute command from ({"command"=>"subscribe", "identifier"=>"{\"channel\":\"GroupsChannel\",\"group_id\":3}"}) [SyntaxError - /Users/zayne/Development/personal/ghostchat_v2/app/channels/groups_channel.rb:20: syntax error, unexpected tIDENTIFIER, expecting ')'
+      group_id: data['group_id'], 
+      ^~~~~~~~
+/Users/zayne/Development/personal/ghostchat_v2/app/channels/groups_channel.rb:21: syntax error, unexpected tLABEL, expecting '='
+      iv: iv
+      ^~~]: /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:472:in `block in load_file' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:657:in `new_constants_in' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:471:in `load_file'
+Started GET "/summer_cypress" for 127.0.0.1 at 2018-10-07 11:53:22 -0400
+Processing by GroupsController#show as HTML
+  Parameters: {"slug"=>"summer_cypress"}
+  [1m[36mGroup Load (0.7ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."slug" = $1 LIMIT $2[0m  [["slug", "summer_cypress"], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:78
+  [1m[36mCACHE Group Load (0.0ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."slug" = $1 LIMIT $2[0m  [["slug", "summer_cypress"], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:31
+  [1m[36mMessage Load (0.4ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."group_id" = $1[0m  [["group_id", 3]]
+  ↳ app/controllers/groups_controller.rb:31
+  Rendering groups/show.html.erb within layouts/application
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."group_id" = $1[0m  [["group_id", 3]]
+  ↳ app/views/groups/show.html.erb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mMessage Load (0.5ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."group_id" = $1 ORDER BY "messages"."created_at" ASC[0m  [["group_id", 3]]
+  ↳ app/views/groups/show.html.erb:44
+  Rendered collection of templates [0 times] (0.0ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  Rendered groups/show.html.erb within layouts/application (12.8ms)
+Completed 200 OK in 385ms (Views: 375.3ms | ActiveRecord: 3.5ms)
+
+
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2018-10-07 11:53:22 -0400
+Started GET "/cable" for 127.0.0.1 at 2018-10-07 11:53:24 -0400
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2018-10-07 11:53:24 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Could not execute command from ({"command"=>"subscribe", "identifier"=>"{\"channel\":\"GroupsChannel\",\"group_id\":3}"}) [SyntaxError - /Users/zayne/Development/personal/ghostchat_v2/app/channels/groups_channel.rb:20: syntax error, unexpected tIDENTIFIER, expecting ')'
+      group_id: data['group_id'], 
+      ^~~~~~~~
+/Users/zayne/Development/personal/ghostchat_v2/app/channels/groups_channel.rb:21: syntax error, unexpected tLABEL, expecting '='
+      iv: iv
+      ^~~]: /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:472:in `block in load_file' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:657:in `new_constants_in' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:471:in `load_file'
+Started GET "/summer_cypress" for 127.0.0.1 at 2018-10-07 11:55:13 -0400
+Processing by GroupsController#show as HTML
+  Parameters: {"slug"=>"summer_cypress"}
+  [1m[36mGroup Load (0.3ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."slug" = $1 LIMIT $2[0m  [["slug", "summer_cypress"], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:78
+  [1m[36mCACHE Group Load (0.0ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."slug" = $1 LIMIT $2[0m  [["slug", "summer_cypress"], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:31
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."group_id" = $1[0m  [["group_id", 3]]
+  ↳ app/controllers/groups_controller.rb:31
+  Rendering groups/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."group_id" = $1[0m  [["group_id", 3]]
+  ↳ app/views/groups/show.html.erb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mMessage Load (0.4ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."group_id" = $1 ORDER BY "messages"."created_at" ASC[0m  [["group_id", 3]]
+  ↳ app/views/groups/show.html.erb:44
+  Rendered collection of templates [0 times] (0.0ms)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  Rendered groups/show.html.erb within layouts/application (45.1ms)
+Completed 200 OK in 433ms (Views: 425.5ms | ActiveRecord: 1.8ms)
+
+
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2018-10-07 11:55:14 -0400
+Started GET "/cable" for 127.0.0.1 at 2018-10-07 11:55:15 -0400
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2018-10-07 11:55:15 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Could not execute command from ({"command"=>"subscribe", "identifier"=>"{\"channel\":\"GroupsChannel\",\"group_id\":3}"}) [SyntaxError - /Users/zayne/Development/personal/ghostchat_v2/app/channels/groups_channel.rb:20: syntax error, unexpected tIDENTIFIER, expecting ')'
+      group_id: data['group_id'], 
+      ^~~~~~~~
+/Users/zayne/Development/personal/ghostchat_v2/app/channels/groups_channel.rb:21: syntax error, unexpected tLABEL, expecting '='
+      iv: iv
+      ^~~]: /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:472:in `block in load_file' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:657:in `new_constants_in' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:471:in `load_file'
+Started GET "/summer_cypress" for 127.0.0.1 at 2018-10-07 11:55:38 -0400
+Processing by GroupsController#show as HTML
+  Parameters: {"slug"=>"summer_cypress"}
+  [1m[36mGroup Load (0.8ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."slug" = $1 LIMIT $2[0m  [["slug", "summer_cypress"], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:78
+  [1m[36mCACHE Group Load (0.0ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."slug" = $1 LIMIT $2[0m  [["slug", "summer_cypress"], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:31
+  [1m[36mMessage Load (0.7ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."group_id" = $1[0m  [["group_id", 3]]
+  ↳ app/controllers/groups_controller.rb:31
+  Rendering groups/show.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."group_id" = $1[0m  [["group_id", 3]]
+  ↳ app/views/groups/show.html.erb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mMessage Load (0.6ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."group_id" = $1 ORDER BY "messages"."created_at" ASC[0m  [["group_id", 3]]
+  ↳ app/views/groups/show.html.erb:44
+  Rendered collection of templates [0 times] (0.0ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  Rendered groups/show.html.erb within layouts/application (23.8ms)
+Completed 200 OK in 415ms (Views: 405.6ms | ActiveRecord: 3.1ms)
+
+
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2018-10-07 11:55:38 -0400
+Started GET "/cable" for 127.0.0.1 at 2018-10-07 11:55:39 -0400
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2018-10-07 11:55:39 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Could not execute command from ({"command"=>"subscribe", "identifier"=>"{\"channel\":\"GroupsChannel\",\"group_id\":3}"}) [SyntaxError - /Users/zayne/Development/personal/ghostchat_v2/app/channels/groups_channel.rb:20: syntax error, unexpected tIDENTIFIER, expecting ')'
+      group_id: data['group_id'], 
+      ^~~~~~~~
+/Users/zayne/Development/personal/ghostchat_v2/app/channels/groups_channel.rb:21: syntax error, unexpected tLABEL, expecting '='
+      iv: iv
+      ^~~]: /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:472:in `block in load_file' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:657:in `new_constants_in' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:471:in `load_file'
+Started GET "/summer_cypress" for 127.0.0.1 at 2018-10-07 11:56:28 -0400
+Processing by GroupsController#show as HTML
+  Parameters: {"slug"=>"summer_cypress"}
+  [1m[36mGroup Load (0.3ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."slug" = $1 LIMIT $2[0m  [["slug", "summer_cypress"], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:78
+  [1m[36mCACHE Group Load (0.0ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."slug" = $1 LIMIT $2[0m  [["slug", "summer_cypress"], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:31
+  [1m[36mMessage Load (0.5ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."group_id" = $1[0m  [["group_id", 3]]
+  ↳ app/controllers/groups_controller.rb:31
+  Rendering groups/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."group_id" = $1[0m  [["group_id", 3]]
+  ↳ app/views/groups/show.html.erb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mMessage Load (0.4ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."group_id" = $1 ORDER BY "messages"."created_at" ASC[0m  [["group_id", 3]]
+  ↳ app/views/groups/show.html.erb:44
+  Rendered collection of templates [0 times] (0.0ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  Rendered groups/show.html.erb within layouts/application (18.1ms)
+Completed 200 OK in 273ms (Views: 264.3ms | ActiveRecord: 1.9ms)
+
+
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2018-10-07 11:56:29 -0400
+Started GET "/cable" for 127.0.0.1 at 2018-10-07 11:56:30 -0400
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2018-10-07 11:56:30 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Could not execute command from ({"command"=>"subscribe", "identifier"=>"{\"channel\":\"GroupsChannel\",\"group_id\":3}"}) [SyntaxError - /Users/zayne/Development/personal/ghostchat_v2/app/channels/groups_channel.rb:20: syntax error, unexpected tIDENTIFIER, expecting ')'
+      group_id: data['group_id'], 
+      ^~~~~~~~
+/Users/zayne/Development/personal/ghostchat_v2/app/channels/groups_channel.rb:21: syntax error, unexpected tLABEL, expecting '='
+      iv: iv
+      ^~~]: /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:472:in `block in load_file' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:657:in `new_constants_in' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:471:in `load_file'
+Started GET "/summer_cypress" for 127.0.0.1 at 2018-10-07 11:56:47 -0400
+Processing by GroupsController#show as HTML
+  Parameters: {"slug"=>"summer_cypress"}
+  [1m[36mGroup Load (1.0ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."slug" = $1 LIMIT $2[0m  [["slug", "summer_cypress"], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:78
+  [1m[36mCACHE Group Load (0.0ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."slug" = $1 LIMIT $2[0m  [["slug", "summer_cypress"], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:31
+  [1m[36mMessage Load (0.6ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."group_id" = $1[0m  [["group_id", 3]]
+  ↳ app/controllers/groups_controller.rb:31
+  Rendering groups/show.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."group_id" = $1[0m  [["group_id", 3]]
+  ↳ app/views/groups/show.html.erb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mMessage Load (0.7ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."group_id" = $1 ORDER BY "messages"."created_at" ASC[0m  [["group_id", 3]]
+  ↳ app/views/groups/show.html.erb:44
+  Rendered collection of templates [0 times] (0.0ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  Rendered groups/show.html.erb within layouts/application (32.0ms)
+Completed 200 OK in 269ms (Views: 256.3ms | ActiveRecord: 5.1ms)
+
+
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2018-10-07 11:56:48 -0400
+Started GET "/cable" for 127.0.0.1 at 2018-10-07 11:56:48 -0400
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2018-10-07 11:56:48 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Could not execute command from ({"command"=>"subscribe", "identifier"=>"{\"channel\":\"GroupsChannel\",\"group_id\":3}"}) [SyntaxError - /Users/zayne/Development/personal/ghostchat_v2/app/channels/groups_channel.rb:20: syntax error, unexpected tIDENTIFIER, expecting ')'
+      group_id: data['group_id'], 
+      ^~~~~~~~
+/Users/zayne/Development/personal/ghostchat_v2/app/channels/groups_channel.rb:21: syntax error, unexpected tLABEL, expecting '='
+      iv: iv
+      ^~~]: /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:472:in `block in load_file' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:657:in `new_constants_in' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:471:in `load_file'
+Started GET "/summer_cypress" for 127.0.0.1 at 2018-10-07 11:56:52 -0400
+Processing by GroupsController#show as HTML
+  Parameters: {"slug"=>"summer_cypress"}
+  [1m[36mGroup Load (0.5ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."slug" = $1 LIMIT $2[0m  [["slug", "summer_cypress"], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:78
+  [1m[36mCACHE Group Load (0.0ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."slug" = $1 LIMIT $2[0m  [["slug", "summer_cypress"], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:31
+  [1m[36mMessage Load (0.6ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."group_id" = $1[0m  [["group_id", 3]]
+  ↳ app/controllers/groups_controller.rb:31
+  Rendering groups/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mUser Load (3.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."group_id" = $1[0m  [["group_id", 3]]
+  ↳ app/views/groups/show.html.erb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mMessage Load (0.4ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."group_id" = $1 ORDER BY "messages"."created_at" ASC[0m  [["group_id", 3]]
+  ↳ app/views/groups/show.html.erb:44
+  Rendered collection of templates [0 times] (0.0ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  Rendered groups/show.html.erb within layouts/application (13.6ms)
+Completed 200 OK in 282ms (Views: 267.5ms | ActiveRecord: 5.0ms)
+
+
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2018-10-07 11:56:52 -0400
+Started GET "/cable" for 127.0.0.1 at 2018-10-07 11:56:53 -0400
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2018-10-07 11:56:53 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Could not execute command from ({"command"=>"subscribe", "identifier"=>"{\"channel\":\"GroupsChannel\",\"group_id\":3}"}) [SyntaxError - /Users/zayne/Development/personal/ghostchat_v2/app/channels/groups_channel.rb:20: syntax error, unexpected tIDENTIFIER, expecting ')'
+      group_id: data['group_id'], 
+      ^~~~~~~~
+/Users/zayne/Development/personal/ghostchat_v2/app/channels/groups_channel.rb:21: syntax error, unexpected tLABEL, expecting '='
+      iv: iv
+      ^~~]: /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:472:in `block in load_file' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:657:in `new_constants_in' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:471:in `load_file'
+Started GET "/summer_cypress" for 127.0.0.1 at 2018-10-07 11:56:55 -0400
+Processing by GroupsController#show as HTML
+  Parameters: {"slug"=>"summer_cypress"}
+  [1m[36mGroup Load (0.3ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."slug" = $1 LIMIT $2[0m  [["slug", "summer_cypress"], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:78
+  [1m[36mCACHE Group Load (0.0ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."slug" = $1 LIMIT $2[0m  [["slug", "summer_cypress"], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:31
+  [1m[36mMessage Load (0.4ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."group_id" = $1[0m  [["group_id", 3]]
+  ↳ app/controllers/groups_controller.rb:31
+  Rendering groups/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."group_id" = $1[0m  [["group_id", 3]]
+  ↳ app/views/groups/show.html.erb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mMessage Load (0.6ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."group_id" = $1 ORDER BY "messages"."created_at" ASC[0m  [["group_id", 3]]
+  ↳ app/views/groups/show.html.erb:44
+  Rendered collection of templates [0 times] (0.0ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  Rendered groups/show.html.erb within layouts/application (9.6ms)
+Completed 200 OK in 192ms (Views: 184.7ms | ActiveRecord: 1.8ms)
+
+
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2018-10-07 11:56:55 -0400
+Started GET "/cable" for 127.0.0.1 at 2018-10-07 11:56:55 -0400
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2018-10-07 11:56:55 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Could not execute command from ({"command"=>"subscribe", "identifier"=>"{\"channel\":\"GroupsChannel\",\"group_id\":3}"}) [SyntaxError - /Users/zayne/Development/personal/ghostchat_v2/app/channels/groups_channel.rb:20: syntax error, unexpected tIDENTIFIER, expecting ')'
+      group_id: data['group_id'], 
+      ^~~~~~~~
+/Users/zayne/Development/personal/ghostchat_v2/app/channels/groups_channel.rb:21: syntax error, unexpected tLABEL, expecting '='
+      iv: iv
+      ^~~]: /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:472:in `block in load_file' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:657:in `new_constants_in' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:471:in `load_file'
+Started GET "/summer_cypress" for 127.0.0.1 at 2018-10-07 11:57:18 -0400
+Processing by GroupsController#show as HTML
+  Parameters: {"slug"=>"summer_cypress"}
+  [1m[36mGroup Load (0.3ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."slug" = $1 LIMIT $2[0m  [["slug", "summer_cypress"], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:78
+  [1m[36mCACHE Group Load (0.0ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."slug" = $1 LIMIT $2[0m  [["slug", "summer_cypress"], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:31
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."group_id" = $1[0m  [["group_id", 3]]
+  ↳ app/controllers/groups_controller.rb:31
+  Rendering groups/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."group_id" = $1[0m  [["group_id", 3]]
+  ↳ app/views/groups/show.html.erb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."group_id" = $1 ORDER BY "messages"."created_at" ASC[0m  [["group_id", 3]]
+  ↳ app/views/groups/show.html.erb:44
+  Rendered collection of templates [0 times] (0.0ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  Rendered groups/show.html.erb within layouts/application (22.5ms)
+Completed 200 OK in 227ms (Views: 218.0ms | ActiveRecord: 1.7ms)
+
+
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2018-10-07 11:57:18 -0400
+Started GET "/cable" for 127.0.0.1 at 2018-10-07 11:57:19 -0400
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2018-10-07 11:57:19 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Could not execute command from ({"command"=>"subscribe", "identifier"=>"{\"channel\":\"GroupsChannel\",\"group_id\":3}"}) [SyntaxError - /Users/zayne/Development/personal/ghostchat_v2/app/channels/groups_channel.rb:20: syntax error, unexpected tIDENTIFIER, expecting ')'
+      group_id: data['group_id'], 
+      ^~~~~~~~
+/Users/zayne/Development/personal/ghostchat_v2/app/channels/groups_channel.rb:21: syntax error, unexpected tLABEL, expecting '='
+      iv: iv
+      ^~~]: /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:472:in `block in load_file' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:657:in `new_constants_in' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:471:in `load_file'
+Could not execute command from ({"command"=>"message", "identifier"=>"{\"channel\":\"GroupsChannel\",\"group_id\":3}", "data"=>"{\"message\":\"text\",\"group_id\":3,\"user_id\":1,\"group_access\":\"öv\\u000bQ¤6S¨Ür*tMéor\",\"action\":\"send_message\"}"}) [RuntimeError - Unable to find subscription with identifier: {"channel":"GroupsChannel","group_id":3}]: /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actioncable-5.2.1/lib/action_cable/connection/subscriptions.rb:78:in `find' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actioncable-5.2.1/lib/action_cable/connection/subscriptions.rb:55:in `perform_action' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actioncable-5.2.1/lib/action_cable/connection/subscriptions.rb:19:in `execute_command' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actioncable-5.2.1/lib/action_cable/connection/base.rb:87:in `dispatch_websocket_message' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actioncable-5.2.1/lib/action_cable/server/worker.rb:60:in `block in invoke'
+Started GET "/summer_cypress" for 127.0.0.1 at 2018-10-07 11:58:11 -0400
+Processing by GroupsController#show as HTML
+  Parameters: {"slug"=>"summer_cypress"}
+  [1m[36mGroup Load (0.2ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."slug" = $1 LIMIT $2[0m  [["slug", "summer_cypress"], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:78
+  [1m[36mCACHE Group Load (0.0ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."slug" = $1 LIMIT $2[0m  [["slug", "summer_cypress"], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:31
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."group_id" = $1[0m  [["group_id", 3]]
+  ↳ app/controllers/groups_controller.rb:31
+  Rendering groups/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."group_id" = $1[0m  [["group_id", 3]]
+  ↳ app/views/groups/show.html.erb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."group_id" = $1 ORDER BY "messages"."created_at" ASC[0m  [["group_id", 3]]
+  ↳ app/views/groups/show.html.erb:44
+  Rendered collection of templates [0 times] (0.0ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  Rendered groups/show.html.erb within layouts/application (18.3ms)
+Completed 200 OK in 218ms (Views: 187.8ms | ActiveRecord: 11.0ms)
+
+
+Started GET "/cable" for 127.0.0.1 at 2018-10-07 11:58:12 -0400
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2018-10-07 11:58:12 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Could not execute command from ({"command"=>"subscribe", "identifier"=>"{\"channel\":\"GroupsChannel\",\"group_id\":3}"}) [SyntaxError - /Users/zayne/Development/personal/ghostchat_v2/app/channels/groups_channel.rb:21: syntax error, unexpected tIDENTIFIER, expecting ')'
+      group_id: data['group_id'], 
+      ^~~~~~~~
+/Users/zayne/Development/personal/ghostchat_v2/app/channels/groups_channel.rb:22: syntax error, unexpected tLABEL, expecting '='
+      iv: iv
+      ^~~]: /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:472:in `block in load_file' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:657:in `new_constants_in' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:471:in `load_file'
+Could not execute command from ({"command"=>"message", "identifier"=>"{\"channel\":\"GroupsChannel\",\"group_id\":3}", "data"=>"{\"message\":\"text\",\"group_id\":3,\"user_id\":1,\"group_access\":\"öv\\u000bQ¤6S¨Ür*tMéor\",\"action\":\"send_message\"}"}) [RuntimeError - Unable to find subscription with identifier: {"channel":"GroupsChannel","group_id":3}]: /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actioncable-5.2.1/lib/action_cable/connection/subscriptions.rb:78:in `find' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actioncable-5.2.1/lib/action_cable/connection/subscriptions.rb:55:in `perform_action' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actioncable-5.2.1/lib/action_cable/connection/subscriptions.rb:19:in `execute_command' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actioncable-5.2.1/lib/action_cable/connection/base.rb:87:in `dispatch_websocket_message' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actioncable-5.2.1/lib/action_cable/server/worker.rb:60:in `block in invoke'
+Started GET "/summer_cypress" for 127.0.0.1 at 2018-10-07 11:58:48 -0400
+Processing by GroupsController#show as HTML
+  Parameters: {"slug"=>"summer_cypress"}
+  [1m[36mGroup Load (0.2ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."slug" = $1 LIMIT $2[0m  [["slug", "summer_cypress"], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:78
+  [1m[36mCACHE Group Load (0.0ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."slug" = $1 LIMIT $2[0m  [["slug", "summer_cypress"], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:31
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."group_id" = $1[0m  [["group_id", 3]]
+  ↳ app/controllers/groups_controller.rb:31
+  Rendering groups/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."group_id" = $1[0m  [["group_id", 3]]
+  ↳ app/views/groups/show.html.erb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mMessage Load (0.4ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."group_id" = $1 ORDER BY "messages"."created_at" ASC[0m  [["group_id", 3]]
+  ↳ app/views/groups/show.html.erb:44
+  Rendered collection of templates [0 times] (0.0ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  Rendered groups/show.html.erb within layouts/application (23.3ms)
+Completed 200 OK in 296ms (Views: 265.5ms | ActiveRecord: 9.7ms)
+
+
+Started GET "/cable" for 127.0.0.1 at 2018-10-07 11:58:49 -0400
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2018-10-07 11:58:49 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Could not execute command from ({"command"=>"subscribe", "identifier"=>"{\"channel\":\"GroupsChannel\",\"group_id\":3}"}) [SyntaxError - /Users/zayne/Development/personal/ghostchat_v2/app/channels/groups_channel.rb:21: syntax error, unexpected tIDENTIFIER, expecting ')'
+      group_id: data['group_id'], 
+      ^~~~~~~~
+/Users/zayne/Development/personal/ghostchat_v2/app/channels/groups_channel.rb:23: syntax error, unexpected ')', expecting '='
+    )
+    ^]: /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:472:in `block in load_file' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:657:in `new_constants_in' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:471:in `load_file'
+Could not execute command from ({"command"=>"message", "identifier"=>"{\"channel\":\"GroupsChannel\",\"group_id\":3}", "data"=>"{\"message\":\"text\",\"group_id\":3,\"user_id\":1,\"group_access\":\"öv\\u000bQ¤6S¨Ür*tMéor\",\"action\":\"send_message\"}"}) [RuntimeError - Unable to find subscription with identifier: {"channel":"GroupsChannel","group_id":3}]: /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actioncable-5.2.1/lib/action_cable/connection/subscriptions.rb:78:in `find' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actioncable-5.2.1/lib/action_cable/connection/subscriptions.rb:55:in `perform_action' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actioncable-5.2.1/lib/action_cable/connection/subscriptions.rb:19:in `execute_command' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actioncable-5.2.1/lib/action_cable/connection/base.rb:87:in `dispatch_websocket_message' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actioncable-5.2.1/lib/action_cable/server/worker.rb:60:in `block in invoke'
+Could not execute command from ({"command"=>"message", "identifier"=>"{\"channel\":\"GroupsChannel\",\"group_id\":3}", "data"=>"{\"message\":\"text\",\"group_id\":3,\"user_id\":1,\"group_access\":\"öv\\u000bQ¤6S¨Ür*tMéor\",\"action\":\"send_message\"}"}) [RuntimeError - Unable to find subscription with identifier: {"channel":"GroupsChannel","group_id":3}]: /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actioncable-5.2.1/lib/action_cable/connection/subscriptions.rb:78:in `find' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actioncable-5.2.1/lib/action_cable/connection/subscriptions.rb:55:in `perform_action' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actioncable-5.2.1/lib/action_cable/connection/subscriptions.rb:19:in `execute_command' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actioncable-5.2.1/lib/action_cable/connection/base.rb:87:in `dispatch_websocket_message' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actioncable-5.2.1/lib/action_cable/server/worker.rb:60:in `block in invoke'
+  [1m[35m (4.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "groups"[0m
+  [1m[36mGroup Load (0.3ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" ORDER BY "groups"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mGroup Destroy (9.1ms)[0m  [1m[31mDELETE FROM "groups"[0m
+Started GET "/" for 127.0.0.1 at 2018-10-07 12:01:53 -0400
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by GroupsController#new as HTML
+  Rendering groups/new.html.erb within layouts/formlayouts
+  Rendered groups/new.html.erb within layouts/formlayouts (3.5ms)
+Completed 200 OK in 2165ms (Views: 2130.1ms | ActiveRecord: 6.5ms)
+
+
+Started GET "/cable" for 127.0.0.1 at 2018-10-07 12:01:56 -0400
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2018-10-07 12:01:56 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Could not execute command from ({"command"=>"subscribe", "identifier"=>"{\"channel\":\"GroupsChannel\",\"group_id\":3}"}) [SyntaxError - /Users/zayne/Development/personal/ghostchat_v2/app/channels/groups_channel.rb:21: syntax error, unexpected tIDENTIFIER, expecting ')'
+      group_id: data['group_id'], 
+      ^~~~~~~~
+/Users/zayne/Development/personal/ghostchat_v2/app/channels/groups_channel.rb:23: syntax error, unexpected ')', expecting '='
+    )
+    ^]: /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:472:in `block in load_file' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:657:in `new_constants_in' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:471:in `load_file'
+Started POST "/" for 127.0.0.1 at 2018-10-07 12:02:14 -0400
+Processing by GroupsController#create as */*
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"kLqS39ys5svRvae0sY8DjjOdKPDFQt/vvEsiFzBFBys0a76X2X1JCYIONajqzjOHZBLThIadqlcmLQ5270I1pQ==", "group"=>{"title"=>"", "expires_in"=>"60", "password"=>"[FILTERED]"}}
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "groups"."title" FROM "groups"[0m
+  ↳ app/models/group.rb:57
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/groups_controller.rb:16
+  [1m[36mGroup Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "groups" WHERE LOWER("groups"."title") = LOWER($1) LIMIT $2[0m  [["title", "extra_innings"], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:16
+  [1m[36mGroup Create (1.3ms)[0m  [1m[32mINSERT INTO "groups" ("title", "slug", "expiration", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "extra_innings"], ["slug", "extra_innings"], ["expiration", "2018-10-07 17:02:14.484371"], ["created_at", "2018-10-07 16:02:14.484228"], ["updated_at", "2018-10-07 16:02:14.484228"]]
+  ↳ app/controllers/groups_controller.rb:16
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/groups_controller.rb:16
+  Rendering groups/makeusers.html.erb
+  Rendered groups/makeusers.html.erb (2.9ms)
+Completed 200 OK in 27ms (Views: 5.9ms | ActiveRecord: 4.9ms)
+
+
+Started POST "/extra_innings/users" for 127.0.0.1 at 2018-10-07 12:02:16 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6QrwgiPEqNKBSrU7a79fxMxWIbFhqZUKb8w9B+320TlPDnjfaK+Gjt8heSFlkPwGe13aF172BBQhQWBa8Mu1Ug==", "user"=>{"username"=>""}, "commit"=>"Create User", "group_slug"=>"extra_innings"}
+  [1m[36mGroup Load (0.2ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."slug" = $1 LIMIT $2[0m  [["slug", "extra_innings"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "users"."username" FROM "users"[0m
+  ↳ app/models/user.rb:15
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:14
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) AND "users"."group_id" = $2 LIMIT $3[0m  [["username", "mortifying_warhol"], ["group_id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:14
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("group_id", "username", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["group_id", 4], ["username", "mortifying_warhol"], ["created_at", "2018-10-07 16:02:16.443562"], ["updated_at", "2018-10-07 16:02:16.443562"]]
+  ↳ app/controllers/users_controller.rb:14
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:14
+Redirected to http://localhost:3000/extra_innings
+Completed 302 Found in 16ms (ActiveRecord: 3.8ms)
+
+
+Started GET "/extra_innings" for 127.0.0.1 at 2018-10-07 12:02:16 -0400
+Processing by GroupsController#show as HTML
+  Parameters: {"slug"=>"extra_innings"}
+  [1m[36mGroup Load (0.2ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."slug" = $1 LIMIT $2[0m  [["slug", "extra_innings"], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:78
+  [1m[36mCACHE Group Load (0.0ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."slug" = $1 LIMIT $2[0m  [["slug", "extra_innings"], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:31
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."group_id" = $1[0m  [["group_id", 4]]
+  ↳ app/controllers/groups_controller.rb:31
+  Rendering groups/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."group_id" = $1[0m  [["group_id", 4]]
+  ↳ app/views/groups/show.html.erb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mMessage Load (0.4ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."group_id" = $1 ORDER BY "messages"."created_at" ASC[0m  [["group_id", 4]]
+  ↳ app/views/groups/show.html.erb:44
+  Rendered collection of templates [0 times] (0.0ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  Rendered groups/show.html.erb within layouts/application (17.8ms)
+Completed 200 OK in 441ms (Views: 412.0ms | ActiveRecord: 7.5ms)
+
+
+Started GET "/cable" for 127.0.0.1 at 2018-10-07 12:02:17 -0400
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2018-10-07 12:02:17 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Could not execute command from ({"command"=>"subscribe", "identifier"=>"{\"channel\":\"GroupsChannel\",\"group_id\":4}"}) [SyntaxError - /Users/zayne/Development/personal/ghostchat_v2/app/channels/groups_channel.rb:21: syntax error, unexpected tIDENTIFIER, expecting ')'
+      group_id: data['group_id'], 
+      ^~~~~~~~
+/Users/zayne/Development/personal/ghostchat_v2/app/channels/groups_channel.rb:23: syntax error, unexpected ')', expecting '='
+    )
+    ^]: /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:472:in `block in load_file' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:657:in `new_constants_in' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:471:in `load_file'
+Could not execute command from ({"command"=>"message", "identifier"=>"{\"channel\":\"GroupsChannel\",\"group_id\":4}", "data"=>"{\"message\":\"test\",\"group_id\":4,\"user_id\":2,\"group_access\":\"öv\\u000bQ¤6S¨Ür*tMéor\",\"action\":\"send_message\"}"}) [RuntimeError - Unable to find subscription with identifier: {"channel":"GroupsChannel","group_id":4}]: /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actioncable-5.2.1/lib/action_cable/connection/subscriptions.rb:78:in `find' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actioncable-5.2.1/lib/action_cable/connection/subscriptions.rb:55:in `perform_action' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actioncable-5.2.1/lib/action_cable/connection/subscriptions.rb:19:in `execute_command' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actioncable-5.2.1/lib/action_cable/connection/base.rb:87:in `dispatch_websocket_message' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actioncable-5.2.1/lib/action_cable/server/worker.rb:60:in `block in invoke'
+Started GET "/extra_innings" for 127.0.0.1 at 2018-10-07 12:02:58 -0400
+Started GET "/cable" for 127.0.0.1 at 2018-10-07 12:03:08 -0400
+Processing by GroupsController#show as HTML
+  Parameters: {"slug"=>"extra_innings"}
+  [1m[36mGroup Load (0.2ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."slug" = $1 LIMIT $2[0m  [["slug", "extra_innings"], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:78
+  [1m[36mCACHE Group Load (0.0ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."slug" = $1 LIMIT $2[0m  [["slug", "extra_innings"], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:31
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."group_id" = $1[0m  [["group_id", 4]]
+  ↳ app/controllers/groups_controller.rb:31
+  Rendering groups/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."group_id" = $1[0m  [["group_id", 4]]
+  ↳ app/views/groups/show.html.erb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."group_id" = $1 ORDER BY "messages"."created_at" ASC[0m  [["group_id", 4]]
+  ↳ app/views/groups/show.html.erb:44
+  Rendered collection of templates [0 times] (0.0ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  Rendered groups/show.html.erb within layouts/application (24.1ms)
+Completed 200 OK in 309ms (Views: 275.8ms | ActiveRecord: 9.4ms)
+
+
+Started GET "/cable" for 127.0.0.1 at 2018-10-07 12:03:08 -0400
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2018-10-07 12:03:09 -0400
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2018-10-07 12:03:09 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+WebSocket error occurred: Broken pipe
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2018-10-07 12:03:09 -0400
+Could not execute command from ({"command"=>"subscribe", "identifier"=>"{\"channel\":\"GroupsChannel\",\"group_id\":3}"}) [SyntaxError - /Users/zayne/Development/personal/ghostchat_v2/app/channels/groups_channel.rb:24: syntax error, unexpected end-of-input, expecting keyword_end
+  end
+     ^]: /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:472:in `block in load_file' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:657:in `new_constants_in' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:471:in `load_file'
+Started GET "/cable" for 127.0.0.1 at 2018-10-07 12:03:09 -0400
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2018-10-07 12:03:09 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Could not execute command from ({"command"=>"subscribe", "identifier"=>"{\"channel\":\"GroupsChannel\",\"group_id\":4}"}) [SyntaxError - /Users/zayne/Development/personal/ghostchat_v2/app/channels/groups_channel.rb:24: syntax error, unexpected end-of-input, expecting keyword_end
+  end
+     ^]: /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:472:in `block in load_file' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:657:in `new_constants_in' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:471:in `load_file'
+Could not execute command from ({"command"=>"message", "identifier"=>"{\"channel\":\"GroupsChannel\",\"group_id\":4}", "data"=>"{\"message\":\"will it work?\",\"group_id\":4,\"user_id\":2,\"group_access\":\"öv\\u000bQ¤6S¨Ür*tMéor\",\"action\":\"send_message\"}"}) [RuntimeError - Unable to find subscription with identifier: {"channel":"GroupsChannel","group_id":4}]: /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actioncable-5.2.1/lib/action_cable/connection/subscriptions.rb:78:in `find' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actioncable-5.2.1/lib/action_cable/connection/subscriptions.rb:55:in `perform_action' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actioncable-5.2.1/lib/action_cable/connection/subscriptions.rb:19:in `execute_command' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actioncable-5.2.1/lib/action_cable/connection/base.rb:87:in `dispatch_websocket_message' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actioncable-5.2.1/lib/action_cable/server/worker.rb:60:in `block in invoke'
+Started GET "/extra_innings" for 127.0.0.1 at 2018-10-07 12:04:04 -0400
+Processing by GroupsController#show as HTML
+  Parameters: {"slug"=>"extra_innings"}
+  [1m[36mGroup Load (0.2ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."slug" = $1 LIMIT $2[0m  [["slug", "extra_innings"], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:78
+  [1m[36mCACHE Group Load (0.0ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."slug" = $1 LIMIT $2[0m  [["slug", "extra_innings"], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:31
+  [1m[36mMessage Load (0.4ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."group_id" = $1[0m  [["group_id", 4]]
+  ↳ app/controllers/groups_controller.rb:31
+  Rendering groups/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."group_id" = $1[0m  [["group_id", 4]]
+  ↳ app/views/groups/show.html.erb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."group_id" = $1 ORDER BY "messages"."created_at" ASC[0m  [["group_id", 4]]
+  ↳ app/views/groups/show.html.erb:44
+  Rendered collection of templates [0 times] (0.0ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  Rendered groups/show.html.erb within layouts/application (19.3ms)
+Completed 200 OK in 286ms (Views: 256.9ms | ActiveRecord: 8.7ms)
+
+
+Started GET "/cable" for 127.0.0.1 at 2018-10-07 12:04:05 -0400
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2018-10-07 12:04:05 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Could not execute command from ({"command"=>"subscribe", "identifier"=>"{\"channel\":\"GroupsChannel\",\"group_id\":4}"}) [SyntaxError - /Users/zayne/Development/personal/ghostchat_v2/app/channels/groups_channel.rb:26: syntax error, unexpected end-of-input, expecting keyword_end
+  end
+     ^]: /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:472:in `block in load_file' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:657:in `new_constants_in' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:471:in `load_file'
+Could not execute command from ({"command"=>"message", "identifier"=>"{\"channel\":\"GroupsChannel\",\"group_id\":4}", "data"=>"{\"message\":\"test\",\"group_id\":4,\"user_id\":2,\"group_access\":\"öv\\u000bQ¤6S¨Ür*tMéor\",\"action\":\"send_message\"}"}) [RuntimeError - Unable to find subscription with identifier: {"channel":"GroupsChannel","group_id":4}]: /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actioncable-5.2.1/lib/action_cable/connection/subscriptions.rb:78:in `find' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actioncable-5.2.1/lib/action_cable/connection/subscriptions.rb:55:in `perform_action' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actioncable-5.2.1/lib/action_cable/connection/subscriptions.rb:19:in `execute_command' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actioncable-5.2.1/lib/action_cable/connection/base.rb:87:in `dispatch_websocket_message' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actioncable-5.2.1/lib/action_cable/server/worker.rb:60:in `block in invoke'
+Started GET "/cable" for 127.0.0.1 at 2018-10-07 12:04:11 -0400
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2018-10-07 12:04:11 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Could not execute command from ({"command"=>"subscribe", "identifier"=>"{\"channel\":\"GroupsChannel\",\"group_id\":3}"}) [SyntaxError - /Users/zayne/Development/personal/ghostchat_v2/app/channels/groups_channel.rb:26: syntax error, unexpected end-of-input, expecting keyword_end
+  end
+     ^]: /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.3.2/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:472:in `block in load_file' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:657:in `new_constants_in' | /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:471:in `load_file'
+Started GET "/extra_innings" for 127.0.0.1 at 2018-10-07 12:04:29 -0400
+Processing by GroupsController#show as HTML
+  Parameters: {"slug"=>"extra_innings"}
+  [1m[36mGroup Load (0.4ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."slug" = $1 LIMIT $2[0m  [["slug", "extra_innings"], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:78
+  [1m[36mCACHE Group Load (0.0ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."slug" = $1 LIMIT $2[0m  [["slug", "extra_innings"], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:31
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."group_id" = $1[0m  [["group_id", 4]]
+  ↳ app/controllers/groups_controller.rb:31
+  Rendering groups/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."group_id" = $1[0m  [["group_id", 4]]
+  ↳ app/views/groups/show.html.erb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."group_id" = $1 ORDER BY "messages"."created_at" ASC[0m  [["group_id", 4]]
+  ↳ app/views/groups/show.html.erb:44
+  Rendered collection of templates [0 times] (0.0ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  Rendered groups/show.html.erb within layouts/application (18.9ms)
+Completed 200 OK in 294ms (Views: 265.1ms | ActiveRecord: 9.6ms)
+
+
+Started GET "/cable" for 127.0.0.1 at 2018-10-07 12:04:29 -0400
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2018-10-07 12:04:29 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+GroupsChannel is transmitting the subscription confirmation
+GroupsChannel is streaming from groups_4_channel
+GroupsChannel#send_message({"message"=>"test", "group_id"=>4, "user_id"=>2, "group_access"=>"öv\vQ¤6S¨Ür*tMéor"})
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/channels/groups_channel.rb:22
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/channels/groups_channel.rb:22
+  [1m[36mGroup Load (0.2ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/channels/groups_channel.rb:22
+  [1m[36mMessage Create (1.1ms)[0m  [1m[32mINSERT INTO "messages" ("group_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["group_id", 4], ["user_id", 2], ["body", "test"], ["created_at", "2018-10-07 16:04:31.859204"], ["updated_at", "2018-10-07 16:04:31.859204"]]
+  ↳ app/channels/groups_channel.rb:22
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/channels/groups_channel.rb:22
+[ActiveJob] Enqueued MessageBroadcastJob (Job ID: d6ce4a73-7b14-435f-b985-9943ba1718be) to Async(default) with arguments: #<GlobalID:0x00007fc523b0d890 @uri=#<URI::GID gid://ghostchat-v2/Message/1>>
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [MessageBroadcastJob] [d6ce4a73-7b14-435f-b985-9943ba1718be] Performing MessageBroadcastJob (Job ID: d6ce4a73-7b14-435f-b985-9943ba1718be) from Async(default) with arguments: #<GlobalID:0x00007fc523ae6c68 @uri=#<URI::GID gid://ghostchat-v2/Message/1>>
+[ActiveJob] [MessageBroadcastJob] [d6ce4a73-7b14-435f-b985-9943ba1718be]   [1m[36mGroup Load (0.4ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[ActiveJob] [MessageBroadcastJob] [d6ce4a73-7b14-435f-b985-9943ba1718be]   ↳ app/jobs/message_broadcast_job.rb:5
+[ActiveJob] [MessageBroadcastJob] [d6ce4a73-7b14-435f-b985-9943ba1718be]   Rendered messages/_newmessage.html.erb (0.7ms)
+[ActiveJob] [MessageBroadcastJob] [d6ce4a73-7b14-435f-b985-9943ba1718be] Error performing MessageBroadcastJob (Job ID: d6ce4a73-7b14-435f-b985-9943ba1718be) from Async(default) in 29.39ms: SyntaxError (/Users/zayne/Development/personal/ghostchat_v2/app/views/messages/_newmessage.html.erb:2: syntax error, unexpected '<'
+</div>
+^
+/Users/zayne/Development/personal/ghostchat_v2/app/views/messages/_newmessage.html.erb:7: unknown regexp options - crpt
+/Users/zayne/Development/personal/ghostchat_v2/app/views/messages/_newmessage.html.erb:12: unterminated string meets end of file
+          end
+             ^
+/Users/zayne/Development/personal/ghostchat_v2/app/views/messages/_newmessage.html.erb:12: syntax error, unexpected end-of-input, expecting ')'
+          end
+             ^):
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionview-5.2.1/lib/action_view/template.rb:309:in `module_eval'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionview-5.2.1/lib/action_view/template.rb:309:in `compile'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionview-5.2.1/lib/action_view/template.rb:259:in `block (2 levels) in compile!'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/notifications.rb:170:in `instrument'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionview-5.2.1/lib/action_view/template.rb:350:in `instrument'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionview-5.2.1/lib/action_view/template.rb:258:in `block in compile!'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionview-5.2.1/lib/action_view/template.rb:246:in `synchronize'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionview-5.2.1/lib/action_view/template.rb:246:in `compile!'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionview-5.2.1/lib/action_view/template.rb:158:in `block in render'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/notifications.rb:170:in `instrument'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionview-5.2.1/lib/action_view/template.rb:354:in `instrument_render_template'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionview-5.2.1/lib/action_view/template.rb:157:in `render'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionview-5.2.1/lib/action_view/renderer/partial_renderer.rb:344:in `block in render_partial'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionview-5.2.1/lib/action_view/renderer/abstract_renderer.rb:44:in `block in instrument'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/notifications.rb:168:in `block in instrument'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/notifications/instrumenter.rb:23:in `instrument'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/notifications.rb:168:in `instrument'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionview-5.2.1/lib/action_view/renderer/abstract_renderer.rb:43:in `instrument'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionview-5.2.1/lib/action_view/renderer/partial_renderer.rb:333:in `render_partial'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionview-5.2.1/lib/action_view/renderer/partial_renderer.rb:312:in `render'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionview-5.2.1/lib/action_view/renderer/renderer.rb:49:in `render_partial'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionview-5.2.1/lib/action_view/renderer/renderer.rb:23:in `render'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionview-5.2.1/lib/action_view/rendering.rb:103:in `_render_template'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.2.1/lib/action_controller/metal/streaming.rb:219:in `_render_template'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionview-5.2.1/lib/action_view/rendering.rb:84:in `render_to_body'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.2.1/lib/action_controller/metal/rendering.rb:52:in `render_to_body'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.2.1/lib/action_controller/metal/renderers.rb:142:in `render_to_body'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.2.1/lib/abstract_controller/rendering.rb:46:in `render_to_string'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.2.1/lib/action_controller/metal/rendering.rb:41:in `render_to_string'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.2.1/lib/action_controller/renderer.rb:83:in `render'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.2.1/lib/action_controller/metal/rendering.rb:11:in `render'
+/Users/zayne/Development/personal/ghostchat_v2/app/jobs/message_broadcast_job.rb:12:in `render_message'
+/Users/zayne/Development/personal/ghostchat_v2/app/jobs/message_broadcast_job.rb:6:in `perform'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activejob-5.2.1/lib/active_job/execution.rb:39:in `block in perform_now'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/callbacks.rb:109:in `block in run_callbacks'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/i18n-1.1.0/lib/i18n.rb:284:in `with_locale'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activejob-5.2.1/lib/active_job/translation.rb:9:in `block (2 levels) in <module:Translation>'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/callbacks.rb:118:in `instance_exec'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activejob-5.2.1/lib/active_job/logging.rb:26:in `block (4 levels) in <module:Logging>'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/notifications.rb:168:in `block in instrument'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/notifications/instrumenter.rb:23:in `instrument'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/notifications.rb:168:in `instrument'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activejob-5.2.1/lib/active_job/logging.rb:25:in `block (3 levels) in <module:Logging>'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activejob-5.2.1/lib/active_job/logging.rb:46:in `block in tag_logger'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/tagged_logging.rb:71:in `block in tagged'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/tagged_logging.rb:28:in `tagged'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/tagged_logging.rb:71:in `tagged'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activejob-5.2.1/lib/active_job/logging.rb:46:in `tag_logger'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activejob-5.2.1/lib/active_job/logging.rb:22:in `block (2 levels) in <module:Logging>'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/callbacks.rb:118:in `instance_exec'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/callbacks.rb:136:in `run_callbacks'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activejob-5.2.1/lib/active_job/execution.rb:35:in `perform_now'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activejob-5.2.1/lib/active_job/execution.rb:24:in `block in execute'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/callbacks.rb:109:in `block in run_callbacks'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activejob-5.2.1/lib/active_job/railtie.rb:28:in `block (4 levels) in <class:Railtie>'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/execution_wrapper.rb:87:in `wrap'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/reloader.rb:73:in `block in wrap'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/execution_wrapper.rb:87:in `wrap'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/reloader.rb:72:in `wrap'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activejob-5.2.1/lib/active_job/railtie.rb:27:in `block (3 levels) in <class:Railtie>'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/callbacks.rb:118:in `instance_exec'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.1/lib/active_support/callbacks.rb:136:in `run_callbacks'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activejob-5.2.1/lib/active_job/execution.rb:22:in `execute'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activejob-5.2.1/lib/active_job/queue_adapters/async_adapter.rb:70:in `perform'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/concurrent-ruby-1.0.5/lib/concurrent/executor/ruby_thread_pool_executor.rb:348:in `run_task'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/concurrent-ruby-1.0.5/lib/concurrent/executor/ruby_thread_pool_executor.rb:337:in `block (3 levels) in create_worker'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/concurrent-ruby-1.0.5/lib/concurrent/executor/ruby_thread_pool_executor.rb:320:in `loop'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/concurrent-ruby-1.0.5/lib/concurrent/executor/ruby_thread_pool_executor.rb:320:in `block (2 levels) in create_worker'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/concurrent-ruby-1.0.5/lib/concurrent/executor/ruby_thread_pool_executor.rb:319:in `catch'
+/Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/concurrent-ruby-1.0.5/lib/concurrent/executor/ruby_thread_pool_executor.rb:319:in `block in create_worker'
+Started GET "/cable" for 127.0.0.1 at 2018-10-07 12:04:35 -0400
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2018-10-07 12:04:35 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+GroupsChannel is transmitting the subscription confirmation
+GroupsChannel is streaming from groups_3_channel
+Started GET "/extra_innings" for 127.0.0.1 at 2018-10-07 12:05:52 -0400
+Processing by GroupsController#show as HTML
+  Parameters: {"slug"=>"extra_innings"}
+  [1m[36mGroup Load (0.5ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."slug" = $1 LIMIT $2[0m  [["slug", "extra_innings"], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:78
+  [1m[36mCACHE Group Load (0.0ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."slug" = $1 LIMIT $2[0m  [["slug", "extra_innings"], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:31
+  [1m[36mMessage Load (0.4ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."group_id" = $1[0m  [["group_id", 4]]
+  ↳ app/controllers/groups_controller.rb:31
+  Rendering groups/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."group_id" = $1[0m  [["group_id", 4]]
+  ↳ app/views/groups/show.html.erb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."group_id" = $1 ORDER BY "messages"."created_at" ASC[0m  [["group_id", 4]]
+  ↳ app/views/groups/show.html.erb:44
+  Rendered collection of messages/_message.html.erb [1 times] (1.1ms)
+  Rendered groups/show.html.erb within layouts/application (21.4ms)
+Completed 500 Internal Server Error in 38ms (ActiveRecord: 1.8ms)
+
+
+  
+SyntaxError (/Users/zayne/Development/personal/ghostchat_v2/app/views/messages/_message.html.erb:2: syntax error, unexpected '<'
+</div>'.freeze;
+^
+/Users/zayne/Development/personal/ghostchat_v2/app/views/messages/_message.html.erb:6: unterminated regexp meets end of file
+          end
+             ^
+/Users/zayne/Development/personal/ghostchat_v2/app/views/messages/_message.html.erb:6: syntax error, unexpected end-of-input, expecting ')'
+          end
+             ^):
+  
+app/views/messages/_message.html.erb:2: syntax error, unexpected '<'
+app/views/messages/_message.html.erb:6: unterminated regexp meets end of file
+app/views/messages/_message.html.erb:6: syntax error, unexpected end-of-input, expecting ')'
+app/views/groups/show.html.erb:44:in `_app_views_groups_show_html_erb___1676508708746531374_70242341421820'
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2018-10-07 12:05:53 -0400
+GroupsChannel stopped streaming from groups_4_channel
+Started GET "/extra_innings" for 127.0.0.1 at 2018-10-07 12:07:05 -0400
+Processing by GroupsController#show as HTML
+  Parameters: {"slug"=>"extra_innings"}
+  [1m[36mGroup Load (0.2ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."slug" = $1 LIMIT $2[0m  [["slug", "extra_innings"], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:78
+  [1m[36mCACHE Group Load (0.0ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."slug" = $1 LIMIT $2[0m  [["slug", "extra_innings"], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:31
+  [1m[36mMessage Load (0.4ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."group_id" = $1[0m  [["group_id", 4]]
+  ↳ app/controllers/groups_controller.rb:31
+  Rendering groups/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."group_id" = $1[0m  [["group_id", 4]]
+  ↳ app/views/groups/show.html.erb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."group_id" = $1 ORDER BY "messages"."created_at" ASC[0m  [["group_id", 4]]
+  ↳ app/views/groups/show.html.erb:44
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/messages/_message.html.erb:1
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  Rendered collection of messages/_message.html.erb [1 times] (3.5ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  Rendered groups/show.html.erb within layouts/application (27.8ms)
+Completed 200 OK in 277ms (Views: 270.0ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/cable" for 127.0.0.1 at 2018-10-07 12:07:06 -0400
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2018-10-07 12:07:06 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+GroupsChannel is transmitting the subscription confirmation
+GroupsChannel is streaming from groups_4_channel
+GroupsChannel#send_message({"message"=>"test again?", "group_id"=>4, "user_id"=>2, "group_access"=>"öv\vQ¤6S¨Ür*tMéor"})
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/channels/groups_channel.rb:22
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/channels/groups_channel.rb:22
+  [1m[36mGroup Load (0.3ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/channels/groups_channel.rb:22
+  [1m[36mMessage Create (0.3ms)[0m  [1m[32mINSERT INTO "messages" ("group_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["group_id", 4], ["user_id", 2], ["body", "test again?"], ["created_at", "2018-10-07 16:07:09.034286"], ["updated_at", "2018-10-07 16:07:09.034286"]]
+  ↳ app/channels/groups_channel.rb:22
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/channels/groups_channel.rb:22
+[ActiveJob] Enqueued MessageBroadcastJob (Job ID: 7283ca85-a5d7-465f-abac-2c5478d508fb) to Async(default) with arguments: #<GlobalID:0x00007fc5207e23f8 @uri=#<URI::GID gid://ghostchat-v2/Message/2>>
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [MessageBroadcastJob] [7283ca85-a5d7-465f-abac-2c5478d508fb] Performing MessageBroadcastJob (Job ID: 7283ca85-a5d7-465f-abac-2c5478d508fb) from Async(default) with arguments: #<GlobalID:0x00007fc5207d0b30 @uri=#<URI::GID gid://ghostchat-v2/Message/2>>
+[ActiveJob] [MessageBroadcastJob] [7283ca85-a5d7-465f-abac-2c5478d508fb]   [1m[36mGroup Load (0.2ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[ActiveJob] [MessageBroadcastJob] [7283ca85-a5d7-465f-abac-2c5478d508fb]   ↳ app/jobs/message_broadcast_job.rb:5
+[ActiveJob] [MessageBroadcastJob] [7283ca85-a5d7-465f-abac-2c5478d508fb]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[ActiveJob] [MessageBroadcastJob] [7283ca85-a5d7-465f-abac-2c5478d508fb]   ↳ app/views/messages/_newmessage.html.erb:1
+[ActiveJob] [MessageBroadcastJob] [7283ca85-a5d7-465f-abac-2c5478d508fb]   Rendered messages/_newmessage.html.erb (1.6ms)
+[ActiveJob] [MessageBroadcastJob] [7283ca85-a5d7-465f-abac-2c5478d508fb] [ActionCable] Broadcasting to groups_4_channel: {:message=>"<div data-id=\"2\" class=\"message-outer-wrap\" id=\"message-box-2\">\n\t<span class=\"message-username message-box-2\">\n\t\tmortifying_warhol:\n\t</span> \n\t<span class=\"message-created-at\">\n\t\tless than a minute ago\n\t</span> \n\t<br>\n\t</span> \n\t<span class=\"message-content\">\n\t\ttest again?\n\t\t<!-- < % = #EncryptText.decrypt(message.body, nil, message.iv) % > -->\n\t</span>\n\t<br />\n</div>\n\n<script>\n  var my_user_id = 2\n  newMessageClass(my_user_id)\n</script>\n"}
+[ActiveJob] [MessageBroadcastJob] [7283ca85-a5d7-465f-abac-2c5478d508fb] Performed MessageBroadcastJob (Job ID: 7283ca85-a5d7-465f-abac-2c5478d508fb) from Async(default) in 24.79ms
+GroupsChannel transmitting {"message"=>"<div data-id=\"2\" class=\"message-outer-wrap\" id=\"message-box-2\">\n\t<span class=\"message-username message-box-2\">\n\t\tmortifying_warhol:\n\t</span> \n\t<span class=\"message-created-at\">\n\t\tless than a minute ago\n\t</span> \n\t<br>\n\t</span> \n\t<span class=\"message-con... (via streamed from groups_4_channel)
+GroupsChannel#send_message({"message"=>"nice!", "group_id"=>4, "user_id"=>2, "group_access"=>"öv\vQ¤6S¨Ür*tMéor"})
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/channels/groups_channel.rb:22
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/channels/groups_channel.rb:22
+  [1m[36mGroup Load (0.2ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/channels/groups_channel.rb:22
+  [1m[36mMessage Create (0.2ms)[0m  [1m[32mINSERT INTO "messages" ("group_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["group_id", 4], ["user_id", 2], ["body", "nice!"], ["created_at", "2018-10-07 16:07:10.683147"], ["updated_at", "2018-10-07 16:07:10.683147"]]
+  ↳ app/channels/groups_channel.rb:22
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/channels/groups_channel.rb:22
+[ActiveJob] Enqueued MessageBroadcastJob (Job ID: 9dfabaec-a231-47bc-abf8-f6a991fa0b5c) to Async(default) with arguments: #<GlobalID:0x00007fc522886848 @uri=#<URI::GID gid://ghostchat-v2/Message/3>>
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [MessageBroadcastJob] [9dfabaec-a231-47bc-abf8-f6a991fa0b5c] Performing MessageBroadcastJob (Job ID: 9dfabaec-a231-47bc-abf8-f6a991fa0b5c) from Async(default) with arguments: #<GlobalID:0x00007fc52141d0c8 @uri=#<URI::GID gid://ghostchat-v2/Message/3>>
+[ActiveJob] [MessageBroadcastJob] [9dfabaec-a231-47bc-abf8-f6a991fa0b5c]   [1m[36mGroup Load (0.2ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[ActiveJob] [MessageBroadcastJob] [9dfabaec-a231-47bc-abf8-f6a991fa0b5c]   ↳ app/jobs/message_broadcast_job.rb:5
+[ActiveJob] [MessageBroadcastJob] [9dfabaec-a231-47bc-abf8-f6a991fa0b5c]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[ActiveJob] [MessageBroadcastJob] [9dfabaec-a231-47bc-abf8-f6a991fa0b5c]   ↳ app/views/messages/_newmessage.html.erb:1
+[ActiveJob] [MessageBroadcastJob] [9dfabaec-a231-47bc-abf8-f6a991fa0b5c]   Rendered messages/_newmessage.html.erb (1.5ms)
+[ActiveJob] [MessageBroadcastJob] [9dfabaec-a231-47bc-abf8-f6a991fa0b5c] [ActionCable] Broadcasting to groups_4_channel: {:message=>"<div data-id=\"2\" class=\"message-outer-wrap\" id=\"message-box-2\">\n\t<span class=\"message-username message-box-2\">\n\t\tmortifying_warhol:\n\t</span> \n\t<span class=\"message-created-at\">\n\t\tless than a minute ago\n\t</span> \n\t<br>\n\t</span> \n\t<span class=\"message-content\">\n\t\tnice!\n\t\t<!-- < % = #EncryptText.decrypt(message.body, nil, message.iv) % > -->\n\t</span>\n\t<br />\n</div>\n\n<script>\n  var my_user_id = 2\n  newMessageClass(my_user_id)\n</script>\n"}
+[ActiveJob] [MessageBroadcastJob] [9dfabaec-a231-47bc-abf8-f6a991fa0b5c] Performed MessageBroadcastJob (Job ID: 9dfabaec-a231-47bc-abf8-f6a991fa0b5c) from Async(default) in 24.63ms
+GroupsChannel transmitting {"message"=>"<div data-id=\"2\" class=\"message-outer-wrap\" id=\"message-box-2\">\n\t<span class=\"message-username message-box-2\">\n\t\tmortifying_warhol:\n\t</span> \n\t<span class=\"message-created-at\">\n\t\tless than a minute ago\n\t</span> \n\t<br>\n\t</span> \n\t<span class=\"message-con... (via streamed from groups_4_channel)
+GroupsChannel#send_message({"message"=>"test", "group_id"=>4, "user_id"=>2, "group_access"=>"öv\vQ¤6S¨Ür*tMéor"})
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/channels/groups_channel.rb:22
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/channels/groups_channel.rb:22
+  [1m[36mGroup Load (0.3ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/channels/groups_channel.rb:22
+  [1m[36mMessage Create (0.3ms)[0m  [1m[32mINSERT INTO "messages" ("group_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["group_id", 4], ["user_id", 2], ["body", "test"], ["created_at", "2018-10-07 16:07:45.581809"], ["updated_at", "2018-10-07 16:07:45.581809"]]
+  ↳ app/channels/groups_channel.rb:22
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/channels/groups_channel.rb:22
+[ActiveJob] Enqueued MessageBroadcastJob (Job ID: 4345f076-6e82-447e-afe5-e2fb9eea4cd2) to Async(default) with arguments: #<GlobalID:0x00007fc52285e028 @uri=#<URI::GID gid://ghostchat-v2/Message/4>>
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [MessageBroadcastJob] [4345f076-6e82-447e-afe5-e2fb9eea4cd2] Performing MessageBroadcastJob (Job ID: 4345f076-6e82-447e-afe5-e2fb9eea4cd2) from Async(default) with arguments: #<GlobalID:0x00007fc52284e100 @uri=#<URI::GID gid://ghostchat-v2/Message/4>>
+[ActiveJob] [MessageBroadcastJob] [4345f076-6e82-447e-afe5-e2fb9eea4cd2]   [1m[36mGroup Load (0.3ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[ActiveJob] [MessageBroadcastJob] [4345f076-6e82-447e-afe5-e2fb9eea4cd2]   ↳ app/jobs/message_broadcast_job.rb:5
+[ActiveJob] [MessageBroadcastJob] [4345f076-6e82-447e-afe5-e2fb9eea4cd2]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[ActiveJob] [MessageBroadcastJob] [4345f076-6e82-447e-afe5-e2fb9eea4cd2]   ↳ app/views/messages/_newmessage.html.erb:1
+[ActiveJob] [MessageBroadcastJob] [4345f076-6e82-447e-afe5-e2fb9eea4cd2]   Rendered messages/_newmessage.html.erb (1.6ms)
+[ActiveJob] [MessageBroadcastJob] [4345f076-6e82-447e-afe5-e2fb9eea4cd2] [ActionCable] Broadcasting to groups_4_channel: {:message=>"<div data-id=\"2\" class=\"message-outer-wrap\" id=\"message-box-2\">\n\t<span class=\"message-username message-box-2\">\n\t\tmortifying_warhol:\n\t</span> \n\t<span class=\"message-created-at\">\n\t\tless than a minute ago\n\t</span> \n\t<br>\n\t</span> \n\t<span class=\"message-content\">\n\t\ttest\n\t\t<!-- < % = #EncryptText.decrypt(message.body, nil, message.iv) % > -->\n\t</span>\n\t<br />\n</div>\n\n<script>\n  var my_user_id = 2\n  newMessageClass(my_user_id)\n</script>\n"}
+[ActiveJob] [MessageBroadcastJob] [4345f076-6e82-447e-afe5-e2fb9eea4cd2] Performed MessageBroadcastJob (Job ID: 4345f076-6e82-447e-afe5-e2fb9eea4cd2) from Async(default) in 28.47ms
+GroupsChannel transmitting {"message"=>"<div data-id=\"2\" class=\"message-outer-wrap\" id=\"message-box-2\">\n\t<span class=\"message-username message-box-2\">\n\t\tmortifying_warhol:\n\t</span> \n\t<span class=\"message-created-at\">\n\t\tless than a minute ago\n\t</span> \n\t<br>\n\t</span> \n\t<span class=\"message-con... (via streamed from groups_4_channel)
+Started GET "/" for 127.0.0.1 at 2018-10-07 12:08:08 -0400
+Started GET "/cable" for 127.0.0.1 at 2018-10-07 12:08:08 -0400
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by GroupsController#new as HTML
+  [1m[35m (8.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2018-10-07 12:08:08 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+GroupsChannel is transmitting the subscription confirmation
+GroupsChannel is streaming from groups_3_channel
+  Rendering groups/new.html.erb within layouts/formlayouts
+  Rendered groups/new.html.erb within layouts/formlayouts (15.9ms)
+Completed 200 OK in 2114ms (Views: 1984.6ms | ActiveRecord: 53.8ms)
+
+
+Started POST "/" for 127.0.0.1 at 2018-10-07 12:08:18 -0400
+Processing by GroupsController#create as */*
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DLJiPTXmPPFGahNsoMPAg/Koezkh0Myv0buSYmTrh8qoY051MDeTMxXZgXD7gvCKpSeATWIPuRdL3b4Du+y1RA==", "group"=>{"title"=>"tobacco", "expires_in"=>"5", "password"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/groups_controller.rb:16
+  [1m[36mGroup Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "groups" WHERE LOWER("groups"."title") = LOWER($1) LIMIT $2[0m  [["title", "tobacco"], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:16
+  [1m[36mGroup Create (1.1ms)[0m  [1m[32mINSERT INTO "groups" ("title", "slug", "expiration", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "tobacco"], ["slug", "tobacco"], ["expiration", "2018-10-07 16:13:18.018734"], ["created_at", "2018-10-07 16:08:18.018658"], ["updated_at", "2018-10-07 16:08:18.018658"]]
+  ↳ app/controllers/groups_controller.rb:16
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/groups_controller.rb:16
+  Rendering groups/makeusers.html.erb
+  Rendered groups/makeusers.html.erb (2.9ms)
+Completed 200 OK in 21ms (Views: 6.8ms | ActiveRecord: 4.6ms)
+
+
+Started POST "/tobacco/users" for 127.0.0.1 at 2018-10-07 12:08:20 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Sme4tFnn9Eq6SD9Ime3WlDRbsl0iJaowPrtguC7rFV0L/+CfP38hViWT0JxcP7C4IcDB90pExLAGtxeADEpPng==", "user"=>{"username"=>"smacco"}, "commit"=>"Create User", "group_slug"=>"tobacco"}
+  [1m[36mGroup Load (0.2ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."slug" = $1 LIMIT $2[0m  [["slug", "tobacco"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:14
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) AND "users"."group_id" = $2 LIMIT $3[0m  [["username", "smacco"], ["group_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:14
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("group_id", "username", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["group_id", 5], ["username", "smacco"], ["created_at", "2018-10-07 16:08:20.326870"], ["updated_at", "2018-10-07 16:08:20.326870"]]
+  ↳ app/controllers/users_controller.rb:14
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:14
+Redirected to http://localhost:3000/tobacco
+Completed 302 Found in 14ms (ActiveRecord: 2.3ms)
+
+
+Started GET "/tobacco" for 127.0.0.1 at 2018-10-07 12:08:20 -0400
+Processing by GroupsController#show as HTML
+  Parameters: {"slug"=>"tobacco"}
+  [1m[36mGroup Load (0.4ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."slug" = $1 LIMIT $2[0m  [["slug", "tobacco"], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:78
+  [1m[36mCACHE Group Load (0.0ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."slug" = $1 LIMIT $2[0m  [["slug", "tobacco"], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:31
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."group_id" = $1[0m  [["group_id", 5]]
+  ↳ app/controllers/groups_controller.rb:31
+  Rendering groups/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."group_id" = $1[0m  [["group_id", 5]]
+  ↳ app/views/groups/show.html.erb:31
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mMessage Load (0.4ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."group_id" = $1 ORDER BY "messages"."created_at" ASC[0m  [["group_id", 5]]
+  ↳ app/views/groups/show.html.erb:44
+  Rendered collection of templates [0 times] (0.0ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:8
+  Rendered groups/show.html.erb within layouts/application (16.3ms)
+Completed 200 OK in 323ms (Views: 301.9ms | ActiveRecord: 6.5ms)
+
+
+Started GET "/cable" for 127.0.0.1 at 2018-10-07 12:08:20 -0400
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2018-10-07 12:08:20 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+GroupsChannel is transmitting the subscription confirmation
+GroupsChannel is streaming from groups_5_channel
+GroupsChannel#send_message({"message"=>"hey", "group_id"=>5, "user_id"=>3, "group_access"=>"öv\vQ¤6S¨Ür*tMéor"})
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/channels/groups_channel.rb:22
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/channels/groups_channel.rb:22
+  [1m[36mGroup Load (0.2ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/channels/groups_channel.rb:22
+  [1m[36mMessage Create (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("group_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["group_id", 5], ["user_id", 3], ["body", "hey"], ["created_at", "2018-10-07 16:08:22.793451"], ["updated_at", "2018-10-07 16:08:22.793451"]]
+  ↳ app/channels/groups_channel.rb:22
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/channels/groups_channel.rb:22
+[ActiveJob] Enqueued MessageBroadcastJob (Job ID: c4cb388c-69f2-4a9f-9b77-ee4670a74436) to Async(default) with arguments: #<GlobalID:0x00007f99d8fd65f0 @uri=#<URI::GID gid://ghostchat-v2/Message/5>>
+  [1m[36mMessage Load (0.5ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [MessageBroadcastJob] [c4cb388c-69f2-4a9f-9b77-ee4670a74436] Performing MessageBroadcastJob (Job ID: c4cb388c-69f2-4a9f-9b77-ee4670a74436) from Async(default) with arguments: #<GlobalID:0x00007f99d8f8ef48 @uri=#<URI::GID gid://ghostchat-v2/Message/5>>
+[ActiveJob] [MessageBroadcastJob] [c4cb388c-69f2-4a9f-9b77-ee4670a74436]   [1m[36mGroup Load (0.3ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+[ActiveJob] [MessageBroadcastJob] [c4cb388c-69f2-4a9f-9b77-ee4670a74436]   ↳ app/jobs/message_broadcast_job.rb:5
+[ActiveJob] [MessageBroadcastJob] [c4cb388c-69f2-4a9f-9b77-ee4670a74436]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[ActiveJob] [MessageBroadcastJob] [c4cb388c-69f2-4a9f-9b77-ee4670a74436]   ↳ app/views/messages/_newmessage.html.erb:1
+[ActiveJob] [MessageBroadcastJob] [c4cb388c-69f2-4a9f-9b77-ee4670a74436]   Rendered messages/_newmessage.html.erb (2.4ms)
+[ActiveJob] [MessageBroadcastJob] [c4cb388c-69f2-4a9f-9b77-ee4670a74436] [ActionCable] Broadcasting to groups_5_channel: {:message=>"<div data-id=\"3\" class=\"message-outer-wrap\" id=\"message-box-3\">\n\t<span class=\"message-username message-box-3\">\n\t\tsmacco:\n\t</span> \n\t<span class=\"message-created-at\">\n\t\tless than a minute ago\n\t</span> \n\t<br>\n\t</span> \n\t<span class=\"message-content\">\n\t\they\n\t\t<!-- < % = #EncryptText.decrypt(message.body, nil, message.iv) % > -->\n\t</span>\n\t<br />\n</div>\n\n<script>\n  var my_user_id = 3\n  newMessageClass(my_user_id)\n</script>\n"}
+[ActiveJob] [MessageBroadcastJob] [c4cb388c-69f2-4a9f-9b77-ee4670a74436] Performed MessageBroadcastJob (Job ID: c4cb388c-69f2-4a9f-9b77-ee4670a74436) from Async(default) in 26.82ms
+GroupsChannel transmitting {"message"=>"<div data-id=\"3\" class=\"message-outer-wrap\" id=\"message-box-3\">\n\t<span class=\"message-username message-box-3\">\n\t\tsmacco:\n\t</span> \n\t<span class=\"message-created-at\">\n\t\tless than a minute ago\n\t</span> \n\t<br>\n\t</span> \n\t<span class=\"message-content\">\n\t... (via streamed from groups_5_channel)
+GroupsChannel#send_message({"message"=>"what is up fam?", "group_id"=>5, "user_id"=>3, "group_access"=>"öv\vQ¤6S¨Ür*tMéor"})
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/channels/groups_channel.rb:22
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/channels/groups_channel.rb:22
+  [1m[36mGroup Load (0.3ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/channels/groups_channel.rb:22
+  [1m[36mMessage Create (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("group_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["group_id", 5], ["user_id", 3], ["body", "what is up fam?"], ["created_at", "2018-10-07 16:08:27.683047"], ["updated_at", "2018-10-07 16:08:27.683047"]]
+  ↳ app/channels/groups_channel.rb:22
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/channels/groups_channel.rb:22
+[ActiveJob] Enqueued MessageBroadcastJob (Job ID: 8f8ed42e-e7a5-49be-9f04-658f5cd19172) to Async(default) with arguments: #<GlobalID:0x00007f99d8f25278 @uri=#<URI::GID gid://ghostchat-v2/Message/6>>
+  [1m[36mMessage Load (0.6ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ /Users/zayne/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [MessageBroadcastJob] [8f8ed42e-e7a5-49be-9f04-658f5cd19172] Performing MessageBroadcastJob (Job ID: 8f8ed42e-e7a5-49be-9f04-658f5cd19172) from Async(default) with arguments: #<GlobalID:0x00007f99d8f152b0 @uri=#<URI::GID gid://ghostchat-v2/Message/6>>
+[ActiveJob] [MessageBroadcastJob] [8f8ed42e-e7a5-49be-9f04-658f5cd19172]   [1m[36mGroup Load (0.2ms)[0m  [1m[34mSELECT  "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+[ActiveJob] [MessageBroadcastJob] [8f8ed42e-e7a5-49be-9f04-658f5cd19172]   ↳ app/jobs/message_broadcast_job.rb:5
+[ActiveJob] [MessageBroadcastJob] [8f8ed42e-e7a5-49be-9f04-658f5cd19172]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[ActiveJob] [MessageBroadcastJob] [8f8ed42e-e7a5-49be-9f04-658f5cd19172]   ↳ app/views/messages/_newmessage.html.erb:1
+[ActiveJob] [MessageBroadcastJob] [8f8ed42e-e7a5-49be-9f04-658f5cd19172]   Rendered messages/_newmessage.html.erb (1.6ms)
+[ActiveJob] [MessageBroadcastJob] [8f8ed42e-e7a5-49be-9f04-658f5cd19172] [ActionCable] Broadcasting to groups_5_channel: {:message=>"<div data-id=\"3\" class=\"message-outer-wrap\" id=\"message-box-3\">\n\t<span class=\"message-username message-box-3\">\n\t\tsmacco:\n\t</span> \n\t<span class=\"message-created-at\">\n\t\tless than a minute ago\n\t</span> \n\t<br>\n\t</span> \n\t<span class=\"message-content\">\n\t\twhat is up fam?\n\t\t<!-- < % = #EncryptText.decrypt(message.body, nil, message.iv) % > -->\n\t</span>\n\t<br />\n</div>\n\n<script>\n  var my_user_id = 3\n  newMessageClass(my_user_id)\n</script>\n"}
+[ActiveJob] [MessageBroadcastJob] [8f8ed42e-e7a5-49be-9f04-658f5cd19172] Performed MessageBroadcastJob (Job ID: 8f8ed42e-e7a5-49be-9f04-658f5cd19172) from Async(default) in 25.08ms
+GroupsChannel transmitting {"message"=>"<div data-id=\"3\" class=\"message-outer-wrap\" id=\"message-box-3\">\n\t<span class=\"message-username message-box-3\">\n\t\tsmacco:\n\t</span> \n\t<span class=\"message-created-at\">\n\t\tless than a minute ago\n\t</span> \n\t<br>\n\t</span> \n\t<span class=\"message-content\">\n\t... (via streamed from groups_5_channel)

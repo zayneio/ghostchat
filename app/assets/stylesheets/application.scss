@@ -1,0 +1,188 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require jquery-ui
+ *= require social-share-button
+ *= require font-awesome
+ */
+
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+ @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700');
+ @import "social-share-button";
+ @import "font-awesome";
+
+html,body,.group-left, .group-right,.create-group-form{
+  font-family:"Montserrat";
+  height:100%;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.group-new-section-1{
+  // background: #30168E;
+//   background: -webkit-linear-gradient(left top, #30168E, #724FEF);
+//   background: -o-linear-gradient(bottom right, #30168E, #724FEF);
+//   background: -moz-linear-gradient(bottom right, #30168E, #724FEF);
+//   background: linear-gradient(to bottom right, #30168E, #724FEF);
+//   background-color: rgba(248,80,50,1);
+// background: @include filter-gradient(#f85032, #e73827, horizontal);
+
+// background: url("http://emerginggrowth.com/wp-content/uploads/2016/04/Home-Background-Galaxy.jpg");
+// background-size: cover;
+
+
+// background: #152770; /* For browsers that do not support gradients */
+// background: -webkit-linear-gradient(150deg, #152770, #3381b2, #228b8e); /* For Safari 5.1 to 6.0 */
+// background: -o-linear-gradient(150deg, #152770, #3381b2, #228b8e); /* For Opera 11.1 to 12.0 */
+// background: -moz-linear-gradient(150deg, #152770, #3381b2, #228b8e); /* For Firefox 3.6 to 15 */
+// background: linear-gradient(150deg, #152770, #3381b2, #228b8e); /* Standard syntax (must be last) */
+}
+
+
+.new_group{
+  background:none;
+}
+.create-group-form{
+  border: 1px solid #DDDDDD;
+  border-radius:3px;
+  margin-bottom:10px;
+}
+
+.cgf-header{
+  /*background:#F5F5F5;*/
+  color:white;
+  font-size:24px;
+  background:rgba(255,255,255,0.1);
+  text-align:center;
+  border-bottom:1px solid #DDDDDD;
+  padding:20px;
+}
+
+
+.cgf-input-container{
+  padding:20px;
+  input{
+    height:50px;
+    background-color:rgba(255,255,255,0.1);
+      color: white;
+  }
+}
+
+.group-btn{
+  width:100%;
+  color: #311790 !important;
+  font-size:18px;
+}
+
+/* This is the home create group form box I think */
+
+@media screen and (min-width:768px){
+  .group-header{
+    h1{
+
+    }
+  .home-description{
+    margin:auto;
+    width:45%;
+    font-size:18px;
+    font-weight:300;
+  }
+  }
+}
+
+.group-header{
+  font-size:24px;
+  text-align:center;
+  padding:20px;
+  margin-top:70px;
+  color:white;
+}
+
+@media screen and (max-width:768px){
+  .home-description{
+    margin:auto;
+    width:80%;
+    font-size:18px;
+    font-weight:300;
+  }
+}
+
+
+
+/* This is the home create group btn */
+.group-btn{
+    color: #311790 !important;
+    height:50px;
+    background-color: white !important;
+  display: block;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    border:1px solid white !important;
+    &:hover{
+    color: #311790 !important;
+    background-color: white !important;
+    }
+}
+
+.create-group-form label{
+  color:white;
+  font-weight:500;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-text-fill-color: white !important;
+}
+
+.create-group-form, .group-new-section-1{
+  min-height:100%;
+  position:relative;
+}
+
+
+
+@media screen and (max-width:1000px){
+  .group-left{
+    // display:none;
+    // position: relative !important;
+    // right: -41.6%;
+    // left: -41.6%;
+  }
+  /*.msg-input-wrap{
+    bottom:15px;
+    width: 75%;
+    position: fixed;
+    left: 50%;
+    margin-left: -37.5%;
+  }  */
+
+}
+@media screen and (max-width:1000px){
+  .group-left-top{
+   display:none !important;
+  }
+}
+@media screen and (min-width:1001px){
+  .post-content {
+    color:white;
+    margin-left: 40%;
+  }
+}

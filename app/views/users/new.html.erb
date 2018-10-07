@@ -1,0 +1,10 @@
+<h1><%= @group.title %></h1>
+<%= form_for [@group,@user], data:{slug:@group.slug} do |f| %>
+  <% if @group.password_digest %>
+  Enter Password: <%= f.password_field :group_password %><br />
+  <% end %>
+@ <%= f.text_field :username %><br />
+If you are the admin, enter your password below:<br />
+<%= f.password_field :password %>
+<%= f.submit %>
+<% end %>

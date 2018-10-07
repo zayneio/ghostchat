@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ghostchat</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
+  </head>
+
+  <body>
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, class: "alert alert-info" %>
+    <% end %>
+    <div class="spin-son row group-new-section-1">
+      <div class="col-md-6">
+        <div class="group-header">
+          <img src="<%= image_url 'ghost-md.png' %>" width="150">
+          <h1>Encrypted, <br>Expiring Group Chat</h1>
+          <p class="home-description">Create a group for your friends or co-workers in seconds. Solve a problem, share articles and links all in the browser. Once your group expires, it's gone!</p>
+        </div>
+      </div>
+
+
+      <div class="spin-son col-md-6">
+        <!-- Padding Inside Div -->
+        <div class="group-new-right-top">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+    <div id="galaxy">
+      <div class="bg"></div>
+      <div class="stars-back"></div>
+      <div class="stars-middle"></div>
+      <div class="stars-front"></div>
+      <div class="bg center"></div>
+    </div>
+</body>
+</html>
