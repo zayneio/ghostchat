@@ -4,7 +4,7 @@ Ghostchat is an optionally-anonymous, self-destructing group-chat application bu
 
 ---
 
-**Disclaimer**: This repo is a basically just a mirror of one of my first rails projects, the code is not maintained in anyway and has not been updated since ~2017
+**Disclaimer**: This repo is basically just a mirror of one of my first rails projects, the code is not maintained in anyway and has not been updated since ~2017
 
 ---
 
